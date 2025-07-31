@@ -52,27 +52,31 @@ function renderTodo() {
         
         <div class="action-button">
           <button class="todo-edit-button">Edit</button>
-          <button class="delete-todo-button js-delete-todo-button">Delete</button>
+          <button class="delete-todo-button js-delete-todo-button" data-index="${index}">Delete</button>
         </div>
       </div>
     `;
+    
   });
 
-  let todoDisplayElement = document.querySelector('.todo-display');
+  const todoDisplayElement = document.querySelector('.todo-display');
   todoDisplayElement.innerHTML = renderHTML;
-};
 
-// // Loop the array and get the index of deleting item
-// todoList.forEach((todoItem, index) => {
-//   const deleteButtonElement = document.querySelector('.js-delete-todo-button');
-//   deleteButtonElement.addEventListener('click', (event) => {
-//     deleteTodo(index);
-//     console.log('delete');
-//   });
-// });
+  // Set data attribute = (index) to the delete button to match it. 
+  // Select all the button elements, loop the buttons, add click listener on the button, 
+  // get the index of deleting item 
+  // call the delete function
+  const deleteButtonElement = document.querySelectorAll('.js-delete-todo-button');
+  deleteButtonElement.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const index = Number(button.dataset.index);
+      deleteTodo(index);
+    });
+  });
+};
 
 // delete button
 function deleteTodo(index) {
-  todoList.slice(index, 1);
+  todoList.splice(index, 1);
   renderTodo();
 };
