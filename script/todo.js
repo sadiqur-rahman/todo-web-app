@@ -59,6 +59,7 @@ function renderTodo() {
     
   });
 
+  // render the HTML first to get all the buttons to query
   const todoDisplayElement = document.querySelector('.todo-display');
   todoDisplayElement.innerHTML = renderHTML;
 
