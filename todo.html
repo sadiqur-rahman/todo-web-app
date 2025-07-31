@@ -4,22 +4,40 @@
   <link rel="stylesheet" href="style/todo.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo Web App</title>
+  <title>Todo</title>
 </head>
 <body>
-  <div class="todo-header">Todo Application with Vanilla JS</div>
+  <div class="todo-header">Todo</div>
+
   <div class="todo-input-field">
-    <input class="title" type="text" placeholder="Todo Title">
-    <input class="description" type="text" placeholder="Todo description...">
-    <input class="date" type="date">
+    <input class="title" type="text" placeholder="Title">
+    <input class="description" type="text" placeholder="Write a todo...">
+    <input type="date">
+    <input type="time" name="" id="">
     <button>Create</button>
   </div>
-  <div class="todo-display-area">
-    <div class="todo-date">31/07/2025</div>
-    <div class="todo-title">Event Management</div>
-    <div class="todo-description">I need to meet with CEO and discuss about the total budget for the opening ceremony of the project and analysis our own costing for the project.</div>
-    <button class="edit-todo">Edit</button>
-    <button class="delete-button">Delete</button>
+
+  <div class="todo-display">
+    <div class="todo-container">
+      <div class="todo-checkbox">
+        <input class="todo-checkbox-input" type="checkbox">
+      </div>
+
+      <div class="todo-title-description">
+        <div class="todo-title">Event Management</div>
+        <div class="todo-description">I need to meet with CEO and discuss about the total budget for the opening ceremony of the project and analysis our own costing for the project.</div>
+      </div>
+
+      <div class="todo-date-time">
+        <div class="todo-due-date"><b>Due on: </b>10/08/2025</div>
+        <div class="todo-due-date">8:00 AM</div>
+      </div>
+      
+      <div class="action-button">
+        <button class="edit-todo-button">Edit</button>
+        <button class="delete-todo-button">Delete</button>
+      </div>
+    </div>
   </div>
 
   <script src="/script/todo.js"></script>
