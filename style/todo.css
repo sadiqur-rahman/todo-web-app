@@ -53,7 +53,6 @@ body {
 }
 
 .todo-checkbox {
-  display: none;
   margin-right: 10px;
 }
 .todo-checkbox-input:hover {
@@ -84,9 +83,8 @@ body {
   box-shadow: 3px 3px 1px black;
 }
 .todo-edit-button {
-  display: none;
   position: absolute;
-  right: 75px;
+  right: 80px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);
