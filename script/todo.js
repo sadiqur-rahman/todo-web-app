@@ -22,11 +22,16 @@ function getTodoInput() {
     if (todoDate) {
       let todoDateWithText = '<b>Date: </b>' + String(todoDate);
       addTodo(todoDescription, todoDateWithText);
+      document.querySelector('.empty-todo-div').classList.add('empty-alert-div-inactive');
+      document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-active');
   } else {
       addTodo(todoDescription, todoDate);
+      document.querySelector('.empty-todo-div').classList.add('empty-alert-div-inactive');
+      document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-active');
   }
   } else {
-    alert('Write a todo first...');
+    document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-inactive');
+    document.querySelector('.empty-todo-div').classList.add('empty-alert-div-active');
   }
 }
 

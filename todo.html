@@ -10,36 +10,25 @@
   <title>Todo</title>
 </head>
 <body>
-  <div class="todo-header">Todo</div>
-
-  <div class="todo-input-field">
-    <input class="description js-todo-description" type="text" placeholder="Write a todo...">
-    <input class="date js-todo-date" type="date">
-    <button class="todo-create-button js-todo-create-button">Create</button>
-  </div>
-
-  <div class="todo-display">
-    <!--
-
-    <div class="todo-container">
-      <div class="todo-checkbox">
-        <input class="todo-checkbox-input" type="checkbox">
+  <div class="todo-navbar">
+    <div class="navbar-container">
+      <div class="todo-header-container">
+        <div class="todo-header">Todo</div>
       </div>
 
-      <div class="todo-description">Complete the todo task.</div>
-
-      <div class="todo-date">
-        <div class="todo-due-date"><b>Time: </b>10/08/2025</div>
+      <div class="todo-input-field">
+        <input class="description js-todo-description" type="text" placeholder="Write a todo...">
+        <input class="date js-todo-date" type="date">
+        <button class="todo-create-button js-todo-create-button">Create</button>
       </div>
+
+      <div class="empty-todo-div empty-alert-div-inactive">Write a todo first...</div>
+
       
-      <div class="action-button">
-        <button class="todo-edit-button">Edit</button>
-        <button class="delete-todo-button js-delete-todo-button">Clear</button>
-      </div>
     </div>
-
-    -->
   </div>
+  
+  <div class="todo-display"></div>
 
   <script src="/script/todo.js"></script>
 </body>

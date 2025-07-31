@@ -1,6 +1,26 @@
 body {
   font-family: space mono;
   background-color: rgb(238, 238, 238);
+  margin-bottom: 2000px;
+
+}
+
+.todo-navbar {
+  position: fixed;
+  width: 100%;
+  background-color: rgb(233, 144, 28);
+  height: 130px;
+  border-bottom: 2px solid black;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.navbar-container {
+  max-width: 830px;  
+  margin: 0 auto; 
+  align-items: center;
+  justify-content: space-between; 
 }
 
 .todo-header {
@@ -11,7 +31,6 @@ body {
 .todo-input-field {
   display: flex;
   max-width: 834px;
-  margin-bottom: 30px;
   gap: 10px;
 }
 
@@ -25,20 +44,31 @@ body {
 
 .description, .date {
   font-family: space mono;
-  padding-left: 5px;
-  height: 25px;
-  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
 }
-
-
+.empty-alert-div-inactive {
+  display: none;
+}
+.empty-alert-div-active {
+  display: block;
+  margin-top: 5px;
+  padding-left: 10px;
+}
 
 
 
 
 .todo-display {
   display: grid;
+  margin-top: 150px;
   grid-template-columns: auto;
   gap: 20px;
+  top: 0;
+  justify-items: center; 
 }
 
 .todo-container {
@@ -46,10 +76,8 @@ body {
   display: flex;
   background-color: white;
   padding: 15px;
-  max-width: 800px;
-  border: 1px solid black;
+  width: 800px;
   border-radius: 10px;
-  box-shadow: 5px 5px 1px black;
 }
 
 .todo-checkbox {
@@ -74,16 +102,19 @@ body {
   flex: 1;
 }
 
-
-.todo-edit-button, .delete-todo-button, .todo-create-button {
+.todo-create-button {
+  border: 1px solid black;
+  background-color: white;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px black;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.todo-edit-button, .delete-todo-button {
   border: 1px solid black;
   border-radius: 5px;
   font-size: 15px;
-}
-.todo-create-button {
-  height: 25px;
-  font-family: space mono;
-  box-shadow: 3px 3px 1px black;
 }
 .todo-edit-button {
   position: absolute;
@@ -100,9 +131,10 @@ body {
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
-.todo-container:hover, .todo-edit-button:hover, .delete-todo-button:hover, .todo-create-button:hover {
+.todo-edit-button:hover, .delete-todo-button:hover, .todo-create-button:hover {
   box-shadow: 5px 5px 1px black;
   cursor: pointer;
   background-color: rgb(230, 230, 230);
   transition: 0.2s;
 }
+
