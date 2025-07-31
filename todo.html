@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="style/todo.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo Web App</title>
@@ -8,13 +9,18 @@
 <body>
   <div class="todo-header">Todo Application with Vanilla JS</div>
   <div class="todo-input-field">
-    <input class="todo-title" type="text" placeholder="Title">
-    <input class="todo-body" type="text" placeholder="Write something...">
+    <input class="todo-title" type="text" placeholder="Todo Title">
+    <input class="todo-body" type="text" placeholder="Todo description...">
     <input class="todo-date" type="date">
     <button>Create</button>
   </div>
   <div class="todo-display-area">
-    <div class="todo-description"></div>
+    <div class="todo-title">Event Management</div>
+    <div class="todo-description">I need to meet with CEO and discuss about the total budget for the opening ceremony of the project and analysis our own costing for the project.</div>
+    <button class="edit-todo">Edit</button>
+    <button class="delete-button">Delete</button>
   </div>
+
+  <script src="/script/todo.js"></script>
 </body>
 </html>
