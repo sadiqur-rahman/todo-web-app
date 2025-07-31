@@ -1,5 +1,5 @@
 1. click event from SAVE button will get the inputs
 2. save the inputs to TODOLIST array
 3. loop the TODOLIST array after saving a todo and show every todo
-4. delete a todo via DELETE button bu removing from array
-  4.1 how do I know which todo will be deleted
+4. delete a todo via DELETE button by removing from array
+  4.1 how do I know which todo will be deleted? by index. 
