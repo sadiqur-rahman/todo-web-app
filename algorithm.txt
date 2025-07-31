@@ -1,0 +1,3 @@
+1. click event from SAVE button will get the inputs
+2. save the inputs to TODOLIST array
+3. loop the TODOLIST array after saving a todo and show every todo
