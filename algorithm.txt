@@ -11,3 +11,4 @@
 9. make another list to save and show the completed todo
   9.1 completed todo clear button
   9.2 completed todo clear all button
+10. store everything on Local Storage
