@@ -1,6 +1,11 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: space mono;
   background-color: rgb(238, 238, 238);
+}
+
+.todo-header {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .todo-input-field {
@@ -14,10 +19,11 @@ body {
 }
 
 .todo-container {
+  position: relative;
   display: flex;
   background-color: white;
-  padding: 10px;
-  max-width: 800px;
+  padding: 15px;
+  max-width: 1000px;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 5px 5px 1px black;
@@ -25,20 +31,23 @@ body {
 
 .todo-checkbox {
   margin-right: 10px;
+  display: none;
 }
 .todo-checkbox-input:hover {
   cursor: pointer;
 }
 .todo-title-description {
-  flex: 4;
+  flex: 5;
   margin-right: 50px;
 }
 .todo-date-time {
-  flex: 1;
-  margin-right: 50px;
+  flex: 2;
+  margin-right: 100px;
 }
 .action-button {
   flex: 1;
+  position: absolute;
+  right: 10px;
 }
 
 
@@ -46,20 +55,34 @@ body {
   font-weight: bold;
 }
 
-.edit-todo-button, .delete-todo-button {
+.edit-todo-button, .delete-todo-button, .todo-create-button {
   border: 1px solid black;
   border-radius: 5px;
   margin-right: 5px;
 }
+.todo-create-button {
+  height: 25px;
+  font-family: space mono;
+  font-size: 10px;
+  box-shadow: 3px 3px 1px black;
+}
 .edit-todo-button {
-  box-shadow: 5px 5px 1px green;
+  display: none;
+  height: 25px;
+  font-family: space mono;
+  font-size: 10px;
+  box-shadow: 3px 3px 1px rgb(7, 133, 7);
 }
 .delete-todo-button {
-  box-shadow: 5px 5px 1px red;
+  height: 25px;
+  font-family: space mono;
+  font-size: 10px;
+  box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
-.edit-todo-button:hover, .delete-todo-button:hover {
+.edit-todo-button:hover, .delete-todo-button:hover, .todo-create-button:hover {
   box-shadow: 5px 5px 1px black;
+  font-weight: bold;
   cursor: pointer;
   background-color: rgb(230, 230, 230);
   transition: 0.2s;
