@@ -9,8 +9,31 @@ body {
 }
 
 .todo-input-field {
+  display: flex;
+  max-width: 838px;
   margin-bottom: 30px;
+  gap: 10px;
 }
+
+.description{
+  flex: 2;
+}
+
+.date{
+  flex: 1;
+}
+
+.description, .date {
+  font-family: space mono;
+  padding-left: 5px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+
+
+
+
 
 .todo-display {
   display: grid;
@@ -23,66 +46,61 @@ body {
   display: flex;
   background-color: white;
   padding: 15px;
-  max-width: 1000px;
+  max-width: 800px;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 5px 5px 1px black;
 }
 
 .todo-checkbox {
-  margin-right: 10px;
   display: none;
+  margin-right: 10px;
 }
 .todo-checkbox-input:hover {
   cursor: pointer;
 }
-.todo-title-description {
-  flex: 5;
-  margin-right: 50px;
-}
-.todo-date-time {
+.todo-description {
   flex: 2;
-  margin-right: 100px;
+  padding-right: 50px;
+}
+.todo-date {
+  flex: 1;
+  margin-right: 30px;
 }
 .action-button {
+  position: relative;
   flex: 1;
-  position: absolute;
-  right: 10px;
 }
 
 
-.todo-title {
-  font-weight: bold;
-}
-
-.edit-todo-button, .delete-todo-button, .todo-create-button {
+.todo-edit-button, .delete-todo-button, .todo-create-button {
   border: 1px solid black;
   border-radius: 5px;
-  margin-right: 5px;
+  font-size: 15px;
 }
 .todo-create-button {
   height: 25px;
   font-family: space mono;
-  font-size: 10px;
   box-shadow: 3px 3px 1px black;
 }
-.edit-todo-button {
+.todo-edit-button {
   display: none;
+  position: absolute;
+  right: 75px;
   height: 25px;
   font-family: space mono;
-  font-size: 10px;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);
 }
 .delete-todo-button {
+  position: absolute;
+  right: 0;
   height: 25px;
   font-family: space mono;
-  font-size: 10px;
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
-.edit-todo-button:hover, .delete-todo-button:hover, .todo-create-button:hover {
+.todo-edit-button:hover, .delete-todo-button:hover, .todo-create-button:hover {
   box-shadow: 5px 5px 1px black;
-  font-weight: bold;
   cursor: pointer;
   background-color: rgb(230, 230, 230);
   transition: 0.2s;
