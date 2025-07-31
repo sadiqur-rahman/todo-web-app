@@ -1,11 +1,12 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  align-items: baseline;
-  
 }
 
 .todo-display-area {
   display: flex;
+  align-items: first baseline;
+  justify-content: left;
+  gap: 0;
 }
 
 .todo-date {
