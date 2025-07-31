@@ -11,13 +11,23 @@ createButtonElement.addEventListener('click', () => {
   todoDateElement.value = '';
 });
 
-// Gets the Todo from input
+// Gets the Todo and Date from input
 function getTodoInput() {
   const todoDescriptionElement = document.querySelector('.js-todo-description');
   todoDescription = todoDescriptionElement.value;
   const todoDateElement = document.querySelector('.js-todo-date');
   todoDate = todoDateElement.value;
-  addTodo(todoDescription, todoDate);
+
+  if (todoDescription) {
+    if (todoDate) {
+      let todoDateWithText = '<b>Date: </b>' + String(todoDate);
+      addTodo(todoDescription, todoDateWithText);
+  } else {
+      addTodo(todoDescription, todoDate);
+  }
+  } else {
+    alert('Write a todo first...');
+  }
 }
 
 // Adds the Todo into array
@@ -47,7 +57,7 @@ function renderTodo() {
         <div class="todo-description">${todoRender.todo}</div>
 
         <div class="todo-date">
-          <div class="todo-due-date"><b>Time: </b>${todoRender.date}</div>
+          <div class="todo-due-date">${todoRender.date}</div>
         </div>
         
         <div class="action-button">
@@ -56,7 +66,6 @@ function renderTodo() {
         </div>
       </div>
     `;
-    
   });
 
   // render the HTML first to get all the buttons to query

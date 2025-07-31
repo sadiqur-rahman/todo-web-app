@@ -66,6 +66,9 @@ body {
   flex: 1;
   margin-right: 30px;
 }
+.js-todo-date-inactive {
+  display: none;
+}
 .action-button {
   position: relative;
   flex: 1;
