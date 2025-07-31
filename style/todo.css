@@ -1,0 +1,22 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: baseline;
+  
+}
+
+.todo-display-area {
+  display: flex;
+}
+
+.todo-date {
+  flex: 1;
+}
+
+.todo-title {
+  flex: 1;
+}
+
+.todo-description {
+  flex: 1;
+}
+
