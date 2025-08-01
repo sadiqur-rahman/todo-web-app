@@ -1,13 +1,11 @@
 .todo-display-container {
-  position: relative;
+  padding-top: 20px;
 }
 
 .todo-status-div {
   display: none; 
-  position: absolute;
-  top: 25px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 150px;
+  text-align: center;
 }
 .todo-status-completed {
   display: block;
@@ -15,14 +13,14 @@
 
 .todo-display {
   display: grid;
-  margin-top: 150px;
+  margin-top: 140px;
+  gap: 10px;
   grid-template-columns: auto;
-  gap: 20px;
-  top: 0;
   justify-items: center; 
 }
 
 .todo-container {
+  font-size: 15px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -69,11 +67,11 @@
 .todo-edit-button, .delete-todo-button {
   border: 1px solid black;
   border-radius: 5px;
-  font-size: 15px;
+  font-size: 12px;
 }
 .todo-edit-button {
   position: absolute;
-  right: 100px;
+  right: 90px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);

@@ -1,8 +1,8 @@
 // Completed collapse
+const completedDisplay = document.querySelector('.js-completed-todo-display');
 const completedTitle = document.querySelector('.completed-title-container');
-const completedDisplay = document.querySelector('.completed-todo-display');
 
 completedTitle.addEventListener('click', () => {
-  completedDisplay.classList.add('completed-todo-display-active');
-  completedTitle.classList.add('completed-title-container-active');
+  completedDisplay.classList.add('js-completed-todo-display-active');
+  completedTitle.classList.add('js-completed-title-container-active');
 });
