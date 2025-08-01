@@ -1,4 +1,4 @@
-0. load the local storage todo list and show on HTML
+0. load the local storage todo list and show on HTML - Done
 
 1. click event from SAVE button will get the inputs - Done
   1.1 blank input handeling - Done
