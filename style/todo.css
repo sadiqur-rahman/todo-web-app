@@ -1,82 +1,4 @@
-body {
-  font-family: space mono;
-  background-color: rgb(238, 238, 238);
-
-}
-
-.todo-navbar {
-  padding-top: 5px;
-  position: fixed;
-  width: 100%;
-  background-color: rgb(214, 214, 214);
-  height: 130px;
-  border-bottom: 2px solid black;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.todo-header-container{
-  margin-bottom: 5px;
-}
-
-.navbar-container {
-  max-width: 830px;  
-  margin: 0 auto; 
-  align-items: center;
-  justify-content: space-between; 
-}
-
-.todo-header {
-  font-size: 30px;
-  font-weight: bold;
-}
-
-.todo-input-field {
-  display: flex;
-  max-width: 834px;
-  gap: 10px;
-}
-
-.description{
-  flex: 2;
-}
-.date{
-  flex: 1;
-}
-
-.description, .date {
-  font-family: space mono;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 40px;
-  border-radius: 8px;
-  border: none;
-}
-.todo-alert-container {
-  display: block;
-  position: relative;
-  top: 0;
-  margin-bottom: 30px;
-}
-.empty-todo-div {
-  display: none;
-}
-.empty-alert-div-active {
-  display: block;
-  padding-left: 10px;
-  position: absolute;
-  width: 100%;
-  color: rgb(216, 11, 11);
-  font-family: space mono;
-}
-
-
-
-
-
 .todo-display-container {
-  background-color: none;
   position: relative;
 }
 
@@ -87,7 +9,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .todo-status-completed {
   display: block;
 }
@@ -104,32 +25,36 @@ body {
 .todo-container {
   position: relative;
   display: flex;
+  flex-direction: row;
   background-color: white;
-  padding: 15px;
+  padding: 10px;
   width: 800px;
   border-radius: 10px;
 }
 
 .todo-checkbox {
   margin-right: 10px;
-}
-.todo-checkbox-input:hover {
-  cursor: pointer;
+  width: 20px;
 }
 .todo-description {
   flex: 2;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  height: auto;
   padding-right: 50px;
 }
 .todo-date {
   flex: 1;
-  margin-right: 30px;
-}
-.js-todo-date-inactive {
-  display: none;
 }
 .action-button {
-  position: relative;
+  display: flex;
+  flex-direction: row;
   flex: 1;
+}
+
+.js-todo-date-inactive {
+  display: none;
 }
 
 .todo-create-button {
@@ -148,14 +73,14 @@ body {
 }
 .todo-edit-button {
   position: absolute;
-  right: 80px;
+  right: 100px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);
 }
 .delete-todo-button {
   position: absolute;
-  right: 0;
+  right: 15px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
@@ -168,3 +93,6 @@ body {
   transition: 0.2s;
 }
 
+.todo-checkbox-input:hover {
+  cursor: pointer;
+}

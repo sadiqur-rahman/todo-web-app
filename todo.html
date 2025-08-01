@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="style/general.css">
   <link rel="stylesheet" href="style/todo.css">
+  <link rel="stylesheet" href="style/navbar.css">
+  <link rel="stylesheet" href="style/completed todo/completed.css">
+  <link rel="stylesheet" href="style/completed todo/completed.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -37,6 +42,35 @@
     </div>
   </div>
 
+  <div class="completed-container">
+    <!-- This div should be clickable -->
+    <div class="completed-title-container">
+      <div class="completed-title">Completed</div>
+      <div class="completed-count">1</div>
+    </div>
+
+    <!-- This div should collapse after the click -->
+    <div class="completed-todo-display">
+      <!-- Completed todo items will be rendered here -->
+      <div class="todo-container">
+        <div class="todo-checkbox">
+          <input class="todo-checkbox-input" type="checkbox">
+        </div>
+
+        <div class="todo-description">${todoItem.todo}</div>
+
+        <div class="todo-date">
+          <div class="todo-due-date">${todoItem.date}</div>
+        </div>
+        
+        <div class="action-button">
+          <button class="delete-todo-button js-delete-todo-button" data-index="${index}">Clear</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="/script/todo.js"></script>
+  <script src="script/completed.js"></script>
 </body>
 </html>

@@ -128,3 +128,18 @@ function deleteTodo(index) {
 function saveToLocal() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

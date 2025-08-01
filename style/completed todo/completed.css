@@ -1,0 +1,51 @@
+.completed-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.completed-title-container {
+  position: relative;
+  display: flex;
+  width: 800px;
+  height: 30px;
+  margin-top: 50px;
+  border-bottom: 2px solid black;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+.completed-title-container-active {
+  background-color: rgb(219, 219, 219);
+}
+
+.completed-title-container:hover {
+  cursor: pointer;
+  background-color: rgb(219, 219, 219);
+}
+
+.completed-title {
+  flex: 1;
+  position: inherit;
+  text-align: left;
+}
+
+.completed-count {
+  flex: 1;
+  position: inherit;
+  text-align: right;
+}
+
+.completed-todo-display {
+  max-height:0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.completed-todo-display-active {
+  max-height: 1000px;
+  background-color: none;
+}
