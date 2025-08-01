@@ -44,6 +44,7 @@ function addTodo(todo, date){
   // Save to local storage
   saveToLocal();
   renderTodo();
+  console.log('Todo list rendered:', todoList);
 }
 
 // Show the todo array by looping in the HTML
@@ -74,6 +75,10 @@ function renderTodo() {
     `;
   });
 
+  // render the HTML first to get all the buttons to query
+  const todoDisplayElement = document.querySelector('.todo-display');
+  todoDisplayElement.innerHTML = renderHTML;
+
   // Set data attribute = (index) to the delete button to match it. 
   // Select all the button elements, loop the buttons, add click listener on the button, 
   // get the index of deleting item 
@@ -85,11 +90,6 @@ function renderTodo() {
       deleteTodo(index);
     });
   });
-  // render the HTML first to get all the buttons to query
-  const todoDisplayElement = document.querySelector('.todo-display');
-  todoDisplayElement.innerHTML = renderHTML;
-
-  console.log('Todo list rendered:', todoList);
 };
 
 // delete button function
@@ -98,6 +98,7 @@ function deleteTodo(index) {
   // Save to local storage
   saveToLocal();
   renderTodo();
+  console.log('Todo deleted:', todoList);
 };
 
 // Save to local storage
