@@ -63,14 +63,14 @@ body {
 }
 .empty-todo-div {
   display: none;
-  position: absolute;
-  width: 100%;
-  color: rgb(216, 11, 11);
-  font-family: space mono;
 }
 .empty-alert-div-active {
   display: block;
   padding-left: 10px;
+  position: absolute;
+  width: 100%;
+  color: rgb(216, 11, 11);
+  font-family: space mono;
 }
 
 

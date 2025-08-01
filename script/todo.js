@@ -5,35 +5,39 @@ renderTodo();
 
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
+  // get the todo description and date from input fields before clearing them
   getTodoInput();
-  // Clears each input field after create button is clicked. 
+
+  // Clear the input fields after clicking the create button if description is not empty, date is allowed to be empty. 
   const todoDescriptionElement = document.querySelector('.js-todo-description');
-  todoDescriptionElement.value = '';
   const todoDateElement = document.querySelector('.js-todo-date');
-  todoDateElement.value = '';
+
+  if (todoDescriptionElement.value) {
+    todoDescriptionElement.value = '';
+    todoDateElement.value = '';
+    document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-active');
+  } else {
+    // If the description is empty, do not clear the date field
+    document.querySelector('.empty-todo-div').classList.add('empty-alert-div-active');
+  }
 });
 
 // Gets the Todo and Date from input
 function getTodoInput() {
   const todoDescriptionElement = document.querySelector('.js-todo-description');
-  todoDescription = todoDescriptionElement.value;
   const todoDateElement = document.querySelector('.js-todo-date');
+
+  todoDescription = todoDescriptionElement.value;
   todoDate = todoDateElement.value;
 
+  // Display an alert if the input is empty, empty date is allowed
   if (todoDescription) {
     if (todoDate) {
       let todoDateWithText = '<b>Date: </b>' + String(todoDate);
       addTodo(todoDescription, todoDateWithText);
-      document.querySelector('.empty-todo-div').classList.add('empty-alert-div-inactive');
-      document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-active');
   } else {
       addTodo(todoDescription, todoDate);
-      document.querySelector('.empty-todo-div').classList.add('empty-alert-div-inactive');
-      document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-active');
-  }
-  } else {
-    document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-inactive');
-    document.querySelector('.empty-todo-div').classList.add('empty-alert-div-active');
+    }
   }
 }
 
