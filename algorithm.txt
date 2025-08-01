@@ -1,3 +1,5 @@
+0. load the local storage todo list and show on HTML
+
 1. click event from SAVE button will get the inputs - Done
   1.1 blank input handeling - Done
 2. save the inputs to TODOLIST array - Done
@@ -5,11 +7,15 @@
 4. delete a todo via DELETE button by removing from array - Done
 5. make navbar fixed for the todo create section for easy scrolling and creating - Done 
 6. make a alert div for empty todo - DOne
+
 7. make the checkbox button work for completing todo
-8. remove the completed todo from todolist 
-  8.1 store to local 
-  8.2 render the html again
+
+8. remove the completed todo from todolist - Done 
+  8.1 store to local - Done 
+  8.2 render the html again - Done 
+
 9. make another list to save and show the completed todo
   9.1 completed todo clear button
   9.2 completed todo clear all button
-10. store everything on Local Storage
+
+10. store everything on Local Storage - Done 
