@@ -68,10 +68,11 @@
   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
+  margin-top: -3px;
 }
 .todo-edit-button {
   position: absolute;
-  right: 90px;
+  right: 50px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);

@@ -92,7 +92,7 @@ function renderTodo() {
           
           <div class="action-button">
             <button class="todo-edit-button">Edit</button>
-            <button class="delete-todo-button js-delete-todo-button" data-index="${index}">Delete</button>
+            <button class="delete-todo-button js-delete-todo-button" data-index="${index}">X</button>
           </div>
         </div>
       `;
