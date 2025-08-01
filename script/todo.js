@@ -1,9 +1,8 @@
-const todoList = [];
+const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
   getTodoInput();
-
   // Clears each input field after create button is clicked. 
   const todoDescriptionElement = document.querySelector('.js-todo-description');
   todoDescriptionElement.value = '';
@@ -42,6 +41,8 @@ function addTodo(todo, date){
     date
   };
   todoList.push(todoObject);
+  // Save to local storage
+  saveToLocal();
   renderTodo();
 }
 
@@ -73,10 +74,6 @@ function renderTodo() {
     `;
   });
 
-  // render the HTML first to get all the buttons to query
-  const todoDisplayElement = document.querySelector('.todo-display');
-  todoDisplayElement.innerHTML = renderHTML;
-
   // Set data attribute = (index) to the delete button to match it. 
   // Select all the button elements, loop the buttons, add click listener on the button, 
   // get the index of deleting item 
@@ -88,10 +85,22 @@ function renderTodo() {
       deleteTodo(index);
     });
   });
+  // render the HTML first to get all the buttons to query
+  const todoDisplayElement = document.querySelector('.todo-display');
+  todoDisplayElement.innerHTML = renderHTML;
+
+  console.log('Todo list rendered:', todoList);
 };
 
-// delete button
+// delete button function
 function deleteTodo(index) {
   todoList.splice(index, 1);
+  // Save to local storage
+  saveToLocal();
   renderTodo();
 };
+
+// Save to local storage
+function saveToLocal() {
+  localStorage.setItem('todoList', JSON.stringify(todoList));
+}
