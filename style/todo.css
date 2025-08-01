@@ -6,6 +6,7 @@ body {
 }
 
 .todo-navbar {
+  padding-top: 5px;
   position: fixed;
   width: 100%;
   background-color: rgb(214, 214, 214);
@@ -14,6 +15,10 @@ body {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.todo-header-container{
+  margin-bottom: 5px;
 }
 
 .navbar-container {
@@ -50,12 +55,21 @@ body {
   border-radius: 8px;
   border: none;
 }
-.empty-alert-div-inactive {
+.todo-alert-container {
+  display: block;
+  position: relative;
+  top: 0;
+  margin-bottom: 30px;
+}
+.empty-todo-div {
   display: none;
+  position: absolute;
+  width: 100%;
+  color: rgb(216, 11, 11);
+  font-family: space mono;
 }
 .empty-alert-div-active {
   display: block;
-  margin-top: 5px;
   padding-left: 10px;
 }
 
