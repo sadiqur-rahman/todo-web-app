@@ -42,7 +42,6 @@ body {
 .description{
   flex: 2;
 }
-
 .date{
   flex: 1;
 }
@@ -73,8 +72,13 @@ body {
   font-family: space mono;
 }
 
+.todo-status-div {
+  display: none; /* hidden by default */
+}
 
-
+.todo-status-completed {
+  display: block !important;
+}
 
 .todo-display {
   display: grid;

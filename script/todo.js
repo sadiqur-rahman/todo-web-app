@@ -1,34 +1,26 @@
 const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
-// render the todo list from local storage on page load
-renderTodo();
+// check todo status on page load
+checkTodoStatus(); 
 
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
   // get the todo description and date from input fields before clearing them
   getTodoInput();
-
-  // Clear the input fields after clicking the create button if description is not empty, date is allowed to be empty. 
-  const todoDescriptionElement = document.querySelector('.js-todo-description');
-  const todoDateElement = document.querySelector('.js-todo-date');
-
-  if (todoDescriptionElement.value) {
-    todoDescriptionElement.value = '';
-    todoDateElement.value = '';
-    document.querySelector('.empty-todo-div').classList.remove('empty-alert-div-active');
-  } else {
-    // If the description is empty, do not clear the date field
-    document.querySelector('.empty-todo-div').classList.add('empty-alert-div-active');
-  }
 });
 
 // Gets the Todo and Date from input
+let timeoutId; // Declare a variable to hold the timeout ID
 function getTodoInput() {
   const todoDescriptionElement = document.querySelector('.js-todo-description');
   const todoDateElement = document.querySelector('.js-todo-date');
+  const emptyTodoDiv = document.querySelector('.empty-todo-div');
 
-  todoDescription = todoDescriptionElement.value;
-  todoDate = todoDateElement.value;
+  const todoDescription = todoDescriptionElement.value.trim();
+  const todoDate = todoDateElement.value;
+
+  clearTimeout(timeoutId); // clear any running alert timeout
+
 
   // Display an alert if the input is empty, empty date is allowed
   if (todoDescription) {
@@ -38,6 +30,21 @@ function getTodoInput() {
   } else {
       addTodo(todoDescription, todoDate);
     }
+
+  // clear input fields
+  todoDescriptionElement.value = '';
+  todoDateElement.value = '';
+
+  // hide alert immediately
+  emptyTodoDiv.classList.remove('empty-alert-div-active');
+
+  } else {
+    // no description: show alert
+    emptyTodoDiv.classList.add('empty-alert-div-active');
+
+    timeoutId = setTimeout(() => {
+      emptyTodoDiv.classList.remove('empty-alert-div-active');
+    }, 2000);
   }
 }
 
@@ -54,28 +61,39 @@ function addTodo(todo, date){
   console.log('Todo list rendered:', todoList);
 }
 
+// Checking todo status before rendering
+function checkTodoStatus() {
+  const todoStatusDiv = document.querySelector('.todo-status-div');
+  if (todoList.length === 0) {
+    todoStatusDiv.classList.add('todo-status-completed');
+  } else {
+    todoStatusDiv.classList.remove('todo-status-completed');
+    renderTodo();
+  }
+}
+
 // Show the todo array by looping in the HTML
 function renderTodo() {
   let renderHTML = '';
   todoList.forEach((todoItem, index) => {
     renderHTML += `
-      <div class="todo-container">
-        <div class="todo-checkbox">
-          <input class="todo-checkbox-input" type="checkbox">
-        </div>
+        <div class="todo-container">
+          <div class="todo-checkbox">
+            <input class="todo-checkbox-input" type="checkbox">
+          </div>
 
-        <div class="todo-description">${todoItem.todo}</div>
+          <div class="todo-description">${todoItem.todo}</div>
 
-        <div class="todo-date">
-          <div class="todo-due-date">${todoItem.date}</div>
+          <div class="todo-date">
+            <div class="todo-due-date">${todoItem.date}</div>
+          </div>
+          
+          <div class="action-button">
+            <button class="todo-edit-button">Edit</button>
+            <button class="delete-todo-button js-delete-todo-button" data-index="${index}">Delete</button>
+          </div>
         </div>
-        
-        <div class="action-button">
-          <button class="todo-edit-button">Edit</button>
-          <button class="delete-todo-button js-delete-todo-button" data-index="${index}">Delete</button>
-        </div>
-      </div>
-    `;
+      `;
   });
 
   // render the HTML first to get all the buttons to query
@@ -108,3 +126,5 @@ function deleteTodo(index) {
 function saveToLocal() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
+
+// empty alert function with timeout
