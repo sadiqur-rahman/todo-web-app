@@ -1,5 +1,8 @@
 const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
+// render the todo list from local storage on page load
+renderTodo();
+
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
   getTodoInput();
@@ -51,20 +54,16 @@ function addTodo(todo, date){
 function renderTodo() {
   let renderHTML = '';
   todoList.forEach((todoItem, index) => {
-    let todoRender = {
-      todo: todoItem.todo,
-      date:  todoItem.date
-    };
     renderHTML += `
       <div class="todo-container">
         <div class="todo-checkbox">
           <input class="todo-checkbox-input" type="checkbox">
         </div>
 
-        <div class="todo-description">${todoRender.todo}</div>
+        <div class="todo-description">${todoItem.todo}</div>
 
         <div class="todo-date">
-          <div class="todo-due-date">${todoRender.date}</div>
+          <div class="todo-due-date">${todoItem.date}</div>
         </div>
         
         <div class="action-button">
