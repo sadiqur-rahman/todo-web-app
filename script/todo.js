@@ -15,7 +15,7 @@ let timeoutId; // Declare a variable to hold the timeout ID
 function getTodoInput() {
   const todoDescriptionElement = document.querySelector('.js-todo-description');
   const todoDateElement = document.querySelector('.js-todo-date');
-  const emptyTodoDiv = document.querySelector('.empty-todo-div');
+  const emptyTodoDiv = document.querySelector('.js-empty-todo-div');
 
   const todoDescription = todoDescriptionElement.value.trim();
   const todoDate = todoDateElement.value;
@@ -63,7 +63,7 @@ function addTodo(todo, date){
 
 // Checking todo status before rendering
 function checkTodoStatus() {
-  const todoStatusDiv = document.querySelector('.todo-status-div');
+  const todoStatusDiv = document.querySelector('.js-todo-status-div');
   if (todoList.length === 0) {
     todoStatusDiv.classList.add('todo-status-completed');
     console.log(todoStatusDiv);
@@ -99,7 +99,7 @@ function renderTodo() {
   });
 
   // render the HTML first to get all the buttons to query
-  const todoDisplayElement = document.querySelector('.todo-display');
+  const todoDisplayElement = document.querySelector('.js-todo-display');
   todoDisplayElement.innerHTML = renderHTML;
 
   // Set data attribute = (index) to the delete button to match it. 
