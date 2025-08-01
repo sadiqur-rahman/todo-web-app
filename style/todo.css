@@ -1,7 +1,6 @@
 body {
   font-family: space mono;
   background-color: rgb(238, 238, 238);
-  margin-bottom: 2000px;
 
 }
 
@@ -72,12 +71,25 @@ body {
   font-family: space mono;
 }
 
+
+
+
+
+.todo-display-container {
+  background-color: none;
+  position: relative;
+}
+
 .todo-status-div {
-  display: none; /* hidden by default */
+  display: none; 
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .todo-status-completed {
-  display: block !important;
+  display: block;
 }
 
 .todo-display {

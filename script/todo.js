@@ -1,7 +1,8 @@
 const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 // check todo status on page load
-checkTodoStatus(); 
+renderTodo();
+checkTodoStatus();
 
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
@@ -57,8 +58,7 @@ function addTodo(todo, date){
   todoList.push(todoObject);
   // Save to local storage
   saveToLocal();
-  renderTodo();
-  console.log('Todo list rendered:', todoList);
+  checkTodoStatus();
 }
 
 // Checking todo status before rendering
@@ -66,10 +66,12 @@ function checkTodoStatus() {
   const todoStatusDiv = document.querySelector('.todo-status-div');
   if (todoList.length === 0) {
     todoStatusDiv.classList.add('todo-status-completed');
+    console.log(todoStatusDiv);
   } else {
     todoStatusDiv.classList.remove('todo-status-completed');
-    renderTodo();
+    console.log(todoStatusDiv);
   }
+  renderTodo();
 }
 
 // Show the todo array by looping in the HTML
@@ -105,6 +107,7 @@ function renderTodo() {
   // get the index of deleting item 
   // call the delete function
   const deleteButtonElement = document.querySelectorAll('.js-delete-todo-button');
+
   deleteButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
       const index = Number(button.dataset.index);
@@ -118,13 +121,10 @@ function deleteTodo(index) {
   todoList.splice(index, 1);
   // Save to local storage
   saveToLocal();
-  renderTodo();
-  console.log('Todo deleted:', todoList);
+  checkTodoStatus();
 };
 
 // Save to local storage
 function saveToLocal() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
-
-// empty alert function with timeout
