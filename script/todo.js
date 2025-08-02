@@ -91,8 +91,11 @@ function renderTodo() {
           </div>
           
           <div class="action-button">
-            <button class="todo-edit-button">Edit</button>
-            <button class="delete-todo-button js-delete-todo-button" data-index="${index}">X</button>
+            <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
+
+            <button class="todo-edit-button js-todo-edit-button" data-index="${index}">Edit</button>
+            
+            <button class="todo-delete-button js-todo-delete-button" data-index="${index}">X</button>
           </div>
         </div>
       `;
@@ -106,7 +109,7 @@ function renderTodo() {
   // Select all the button elements, loop the buttons, add click listener on the button, 
   // get the index of deleting item 
   // call the delete function
-  const deleteButtonElement = document.querySelectorAll('.js-delete-todo-button');
+  const deleteButtonElement = document.querySelectorAll('.js-todo-delete-button');
 
   deleteButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {

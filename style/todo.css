@@ -45,39 +45,53 @@
 .todo-date {
   flex: 1;
 }
+
+.js-todo-date-inactive {
+  display: none;
+}
+
 .action-button {
   display: flex;
   flex-direction: row;
   flex: 1;
 }
 
-.js-todo-date-inactive {
-  display: none;
-}
 
-.todo-edit-button, .delete-todo-button {
+.todo-save-button, .todo-edit-button, .todo-delete-button {
   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
   margin-top: -3px;
+  background-color: white;
 }
+
+.todo-save-button{
+  position: absolute;
+  display: none;
+  right: 100px;
+  height: 25px;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px rgb(7, 133, 7);
+}
+
 .todo-edit-button {
   position: absolute;
   right: 50px;
   height: 25px;
   font-family: space mono;
-  box-shadow: 3px 3px 1px rgb(7, 133, 7);
+  box-shadow: 3px 3px 1px rgb(7, 76, 133);
 }
-.delete-todo-button {
+
+.todo-delete-button {
   position: absolute;
-  right: 15px;
+  right: 10px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
-.todo-edit-button:hover, .delete-todo-button:hover {
-  box-shadow: 5px 5px 1px black;
+.todo-save-button:hover, .todo-edit-button:hover, .todo-delete-button:hover {
+  box-shadow: 4px 4px 1px black;
   cursor: pointer;
   background-color: rgb(230, 230, 230);
   transition: 0.3s;

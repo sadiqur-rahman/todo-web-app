@@ -1,3 +1,5 @@
+const ccompletedTodoList = JSON.parse(localStorage.getItem('completedTodoList')) || [];
+
 // Completed collapse
 const completedTitleElement = document.querySelector('.js-completed-title-container');
 const completedDisplayElement = document.querySelector('.js-completed-todo-display');
