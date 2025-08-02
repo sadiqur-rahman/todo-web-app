@@ -1,7 +1,7 @@
 .completed-todo-display {
-  max-height:0;
+  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease;
+  transition: max-height 0.2s ease;
 }
 
 .js-completed-todo-display-active {
@@ -25,7 +25,10 @@
   width: 800px;
   padding: 10px;
   border-radius: 10px 10px 0px 0px;
+  background-color: none;
+  transition: 0.3s;
 }
+
 .js-completed-title-container-active {
   background-color: rgb(219, 219, 219);
 }

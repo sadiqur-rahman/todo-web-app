@@ -70,7 +70,22 @@
   border: none;
 }
 
+.todo-create-button {
+  border: 1px solid black;
+  background-color: white;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px black;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 15px;
+}
 
+.todo-create-button:hover {
+  box-shadow: 5px 5px 1px black;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+  transition: 0.3s;
+}
 
 
 
