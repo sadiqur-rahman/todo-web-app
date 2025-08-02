@@ -13,7 +13,7 @@
   display: block;
 }
 
-.todo-container-completed {
+.completed-todo-container {
   position: relative;
   display: flex;
   flex-direction: row;

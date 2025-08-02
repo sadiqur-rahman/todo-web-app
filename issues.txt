@@ -22,3 +22,20 @@ Done:
   8.1 store to local - Done 
   8.2 render the html again - Done 
 10. store everything on Local Storage - Done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,8 +27,8 @@
       </div>
 
       <div class="todo-input-field">
-        <input class="description js-todo-description" type="text" placeholder="Write a todo...">
-        <input class="date js-todo-date" type="date">
+        <input class="description js-description" type="text" placeholder="Write a todo...">
+        <input class="date js-date" type="date">
         <button class="todo-create-button js-todo-create-button">Create</button>
       </div>
 
@@ -39,6 +39,13 @@
     <div class="todo-status-div js-todo-status-div">
       All Todos Completed.
     </div>
+
+    <div class="pending-todo-title-container js-pending-todo-title-container">
+      <div class="pending-todo-title">Todos</div>
+      <div class="pending-todo-count js-pending-todo-count">00</div>
+      <div></div>
+    </div>
+
     <div class="todo-display js-todo-display">
       <!-- Todo items will be rendered here -->
     </div>
@@ -48,48 +55,19 @@
     <!-- This div should be clickable -->
     <div class="completed-title-container js-completed-title-container">
       <div class="completed-title">Completed</div>
-      <div class="completed-count">2</div>
+      <div class="completed-count js-completed-count">00</div>
       <div></div>
     </div>
 
     <!-- This div should collapse after the click -->
     <div class="completed-todo-display js-completed-todo-display">
+      
       <!-- Completed todo items will be rendered here -->
-      <div class="todo-container-completed">
-        <div class="complete-todo-checkbox">
-          <input class="complete-todo-checkbox-input" type="checkbox" checked>
-        </div>
 
-        <div class="complete-todo-description">${todoItem.todo}</div>
-
-        <div class="complete-todo-date">
-          <div class="todo-due-date">${todoItem.date}</div>
-        </div>
-        
-        <div class="complete-action-button">
-          <button class="clear-todo-button js-clear-todo-button" data-index="${index}">Clear</button>
-        </div>
-      </div>
-
-      <div class="todo-container-completed">
-        <div class="complete-todo-checkbox">
-          <input class="complete-todo-checkbox-input" type="checkbox" checked>
-        </div>
-
-        <div class="complete-todo-description">${todoItem.todo}</div>
-
-        <div class="complete-todo-date">
-          <div class="todo-due-date">${todoItem.date}</div>
-        </div>
-        
-        <div class="complete-action-button">
-          <button class="clear-todo-button js-clear-todo-button" data-index="${index}">Clear</button>
-        </div>
-      </div>
     </div>
   </div>
 
-  <script src="/script/todo.js"></script>
-  <script src="script/completed.js"></script>
+  <script type="module" src="/script/todo.js"></script>
+  <script type="module" src="script/completed.js"></script>
 </body>
 </html>
