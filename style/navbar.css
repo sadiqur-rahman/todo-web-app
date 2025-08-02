@@ -3,7 +3,7 @@
   padding-top: 5px;
   position: fixed;
   width: 100%;
-  background-color:rgb(228, 181, 120);
+  background-color:rgb(133, 214, 153);
   height: 130px;
   border-bottom: 5px solid black;
   top: 0;
@@ -24,6 +24,7 @@
 
 .todo-header {
   font-size: 30px;
+  color: black;
   font-weight: bold;
 }
 
