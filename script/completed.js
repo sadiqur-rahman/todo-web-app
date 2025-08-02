@@ -7,21 +7,42 @@ updateCompletedCount();
 // Completed collapse
 const completedTitleElement = document.querySelector('.js-completed-title-container');
 const completedDisplayElement = document.querySelector('.js-completed-todo-display');
+const clearAllCompletedButtonElement = document.querySelector('.js-clear-all-button');
 
 let isCompletedTodoOpen = false;
 
 completedTitleElement.addEventListener('click', () => {
-  if (!isCompletedTodoOpen) {
+  if (!isCompletedTodoOpen && completedTodoList.length > 0) {
     completedDisplayElement.classList.add('js-completed-todo-display-active');
     completedTitleElement.classList.add('js-completed-title-container-active');
+    if (completedTodoList.length > 0) {
+      clearAllCompletedButtonElement.classList.add('clear-all-button-active');
+    } else {
+      clearAllCompletedButtonElement.classList.remove('clear-all-button-active');
+    }
     isCompletedTodoOpen = true;
     renderCompleted();
   } else {
     completedDisplayElement.classList.remove('js-completed-todo-display-active');
     completedTitleElement.classList.remove('js-completed-title-container-active');
+    clearAllCompletedButtonElement.classList.remove('clear-all-button-active');
     isCompletedTodoOpen = false;
   }
 });
+
+// Clear all completed todo button
+clearAllCompletedButtonElement.addEventListener('click', () => {
+  clearAllCompletedTodo();
+});
+
+// clear all completed todo function
+function clearAllCompletedTodo() {
+  completedTodoList.length = 0; // Clear the completed todo list
+  saveCompletedToLocal(); // Save the cleared list to local storage
+  renderCompleted(); // Re-render the completed todo display
+  updateCompletedCount(); // Update the completed count
+} 
+
 
 
 // rendering completed todo function
@@ -50,7 +71,35 @@ function renderCompleted() {
   // render the HTML first to get all the buttons to query
   const completedTodoDisplayElement = document.querySelector('.js-completed-todo-display');
   completedTodoDisplayElement.innerHTML = renderCompletedHTML;
+
+  // Add event listeners to the clear completed todo buttons
+  const clearCompleatedTodoButtons = document.querySelectorAll('.js-clear-todo-button');
+  clearCompleatedTodoButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const index = Number(button.dataset.index);
+      clearCompletedTodoButton(index);
+      if (completedTodoList.length === 0) {
+        completedDisplayElement.classList.remove('js-completed-todo-display-active');
+        completedTitleElement.classList.remove('js-completed-title-container-active');
+        clearAllCompletedButtonElement.classList.remove('clear-all-button-active');
+        isCompletedTodoOpen = false;
+      }
+    });
+  });
 }
+
+
+// clear completed todo button
+function clearCompletedTodoButton(index) {
+  index
+  if (index !== null) {
+    completedTodoList.splice(index, 1); // Remove the todo item from the completed list
+    saveCompletedToLocal(); // Save the updated list to local storage
+    renderCompleted(); // Re-render the completed todo display
+    updateCompletedCount(); // Update the completed count
+  }
+}
+
 
 // save completed todo to local storage
 function saveCompletedToLocal() {

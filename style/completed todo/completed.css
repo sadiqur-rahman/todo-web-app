@@ -34,9 +34,9 @@
 }
 
 .completed-title-container:hover {
-  cursor: pointer;
   background-color: rgb(219, 219, 219);
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .completed-title {
@@ -47,8 +47,36 @@
   font-weight: bold;
 }
 
-.completed-count {
+.clear-all-button-container  {
+  display: flex;
+  position: inherit;
   flex: 1;
+  justify-content: right;
+}
+
+.clear-all-button {
+  display: none;
+  text-align: right;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 25px;
+  font-family: space mono;
+  background-color: transparent;
+  color: rgb(100, 100, 100);
+}
+.clear-all-button-active {
+  display: block;
+}
+
+.clear-all-button:hover {
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.completed-count {
+  padding-left: 20px;
   position: inherit;
   text-align: right;
   font-size: 18px;
