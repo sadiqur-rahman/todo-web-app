@@ -1,7 +1,8 @@
-import { todoList, deleteTodo, updatePendingCount } from './todo.js';
+import { todoList, deleteTodo, updatePendingCount, saveToLocal, renderTodo } from './todo.js';
 
 const completedTodoList = JSON.parse(localStorage.getItem('completedTodoList')) || [];
 
+// check todo status on page load
 updateCompletedCount();
 
 // Completed collapse
@@ -49,6 +50,7 @@ function clearAllCompletedTodo() {
 export function renderCompleted() {
   let renderCompletedHTML = '';
   completedTodoList.forEach((todoItem, index) => {
+    if (!todoItem || typeof todoItem.todo !== 'string') return; // skip bad
     renderCompletedHTML += `
         <div class="completed-todo-container">
           <div class="complete-todo-checkbox">
@@ -82,20 +84,57 @@ export function renderCompleted() {
         completedDisplayElement.classList.remove('js-completed-todo-display-active');
         completedTitleElement.classList.remove('js-completed-title-container-active');
         clearAllCompletedButtonElement.classList.remove('clear-all-button-active');
-        isCompletedTodoOpen = false;
       }
     });
   });
 
   // checkbox event listener
+  const completeCheckboxElement = document.querySelectorAll('.complete-todo-checkbox-input');
+  const completeTodoDescriptionElement = document.querySelectorAll('.complete-todo-description');
+  const completeTodoDateElement = document.querySelectorAll('.todo-due-date');
   
+  completeCheckboxElement.forEach((checkbox) => {
+    checkbox.addEventListener('change', (event) => {
+      const index = Number(checkbox.dataset.index);
+
+      if (checkbox.checked) {
+        completeTodoDescriptionElement[index].classList.remove('todo-description-completed');
+        completeTodoDateElement[index].classList.remove('todo-date-completed');
+        setTimeout(() => {
+          undoCompletedTodo(index);
+        }, 1000); // Delay for 1 second before undoing
+      } else {
+        completeTodoDescriptionElement[index].classList.add('todo-description-completed');
+        completeTodoDateElement[index].classList.add('todo-date-completed');
+      }
+    });
+  });
+  
+  updatePendingCount(); // Update the pending count
+  updateCompletedCount(); // Update the completed count
+  console.log('Pending: ', todoList);
+  console.log('Completed: ', completedTodoList); 
 }
 
+// undo completed todo function
+function undoCompletedTodo(index) {
+  if (index !== null && index >= 0 && index < completedTodoList.length) {
+    const todoItem = completedTodoList[index];
+    if (!todoList.includes(todoItem)) {
+      todoList.push(todoItem); // Add the completed todo back to the main todo list
+      saveToLocal(); // Save the updated todo list to local storage
+      completedTodoList.splice(index, 1); // Remove the todo item from the completed list
+      saveCompletedToLocal(); // Save the updated completed list to local storage
+      renderTodo(); // Re-render the todo display
+      renderCompleted(); // Re-render the completed todo display
+      updatePendingCount(); // Update the pending count
+    }
+  }
+}
 
 // clear completed todo button
 function clearCompletedTodoButton(index) {
-  index
-  if (index !== null) {
+  if (index !== null && index >= 0 && index < completedTodoList.length){
     completedTodoList.splice(index, 1); // Remove the todo item from the completed list
     saveCompletedToLocal(); // Save the updated list to local storage
     renderCompleted(); // Re-render the completed todo display
@@ -118,10 +157,9 @@ export function completedTodo(index) {
   // then call the addCompletedTodo function
 
   makeTodoComplete(todoList[index].todo, todoList[index].date);
-  console.log(completedTodoList); // shows completed todo list in console
   totalTodoCompleted = completedTodoList.length;
 
-  updateCompletedCount(totalTodoCompleted);
+  updateCompletedCount();
   saveCompletedToLocal();
   deleteTodo(index);
 }
@@ -134,6 +172,8 @@ function makeTodoComplete(completedTodo, completedDate) {
   };
   completedTodoList.push(todoObjectCompleted);
   // Save to local storage
+  saveCompletedToLocal(); 
+  renderCompleted(); // Re-render the completed todo display
 }
 
 

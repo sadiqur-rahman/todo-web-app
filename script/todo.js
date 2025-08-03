@@ -7,9 +7,6 @@ todoList = todoList.filter(item => item && typeof item.todo === 'string');
 // re-save cleaned list:
 localStorage.setItem('todoList', JSON.stringify(todoList));
 
-
-console.log(todoList); // shows todo list in console
-
 // check todo status on page load
 checkTodoStatus();
 updatePendingCount();
@@ -100,7 +97,7 @@ function checkTodoStatus() {
 
 
 // Show the todo array by looping in the HTML
-function renderTodo() {
+export function renderTodo() {
   let renderHTML = '';
   todoList.forEach((todoItem, index) => {
     if (!todoItem || typeof todoItem.todo !== 'string') return;
@@ -200,7 +197,7 @@ export function deleteTodo(index) {
 
 
 // Save to local storage
-function saveToLocal() {
+export function saveToLocal() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
 

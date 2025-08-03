@@ -56,10 +56,14 @@
 
 .description{
   flex: 2;
+  background-color: white;
 }
 
 .date{
   flex: 1;
+  background-color: white;
+  appearance: none;
+  padding-bottom: 2px;
 }
 
 .description, .date {
