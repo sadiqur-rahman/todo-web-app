@@ -2,6 +2,7 @@
 2. fix the completed-container margin-top 
 3. add features: 
   3.1 undo any completed todo and update both counter - Done 
-  3.2 edit and save any pending todo
+  3.2 make undo complete on uncheck the checkbox
+  3.3 edit and save any pending todo
 4. responsive design for mobile 
 5. make past date selection disable
