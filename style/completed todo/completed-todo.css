@@ -40,7 +40,6 @@
   overflow-wrap: break-word;
   height: auto;
   padding-right: 50px;
-  text-decoration: line-through;
 }
 .complete-todo-date {
   flex: 1;

@@ -57,9 +57,9 @@ export function renderCompleted() {
             <input class="complete-todo-checkbox-input" data-index="${index}" type="checkbox" checked>
           </div>
 
-          <div class="complete-todo-description" data-index="${index}">${todoItem.todo}</div>
+          <div class="complete-todo-description todo-description-completed" data-index="${index}">${todoItem.todo}</div>
 
-          <div class="complete-todo-date">
+          <div class="complete-todo-date todo-date-completed">
             <div class="todo-due-date" data-index="${index}">${todoItem.date}</div>
           </div>
           
