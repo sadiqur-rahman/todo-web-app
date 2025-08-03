@@ -102,7 +102,11 @@ export function renderCompleted() {
         completeTodoDateElement[index].classList.remove('todo-date-completed');
         setTimeout(() => {
           undoCompletedTodo(index);
+          updateCompletedListDisplay();
         }, 1000); // Delay for 1 second before undoing
+
+        
+
       } else {
         completeTodoDescriptionElement[index].classList.add('todo-description-completed');
         completeTodoDateElement[index].classList.add('todo-date-completed');
@@ -115,6 +119,20 @@ export function renderCompleted() {
   console.log('Pending: ', todoList);
   console.log('Completed: ', completedTodoList); 
 }
+
+function updateCompletedListDisplay() {
+  const completedDisplayElement = document.querySelector('.js-completed-todo-display');
+  const completedTitleElement = document.querySelector('.js-completed-title-container');
+  const clearAllCompletedButtonElement = document.querySelector('.js-clear-all-button');
+
+  if (completedTodoList.length === 0) {
+    completedDisplayElement.classList.remove('js-completed-todo-display-active');
+    completedTitleElement.classList.remove('js-completed-title-container-active');
+    clearAllCompletedButtonElement.classList.remove('clear-all-button-active');
+    isCompletedTodoOpen = false;
+  }
+}
+
 
 // undo completed todo function
 function undoCompletedTodo(index) {
