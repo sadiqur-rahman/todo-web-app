@@ -67,6 +67,7 @@
 
 .todo-edit-button {
   position: absolute;
+  display: none;
   right: 50px;
   height: 25px;
   font-family: space mono;
