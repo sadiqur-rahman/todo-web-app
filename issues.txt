@@ -4,3 +4,4 @@
   3.1 undo any completed todo and update both counter 
   3.2 edit and save any pending todo   
 4. responsive design for mobile 
+5. make past date selection disable
