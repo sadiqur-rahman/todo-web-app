@@ -46,7 +46,7 @@ function clearAllCompletedTodo() {
 
 
 // rendering completed todo function
-function renderCompleted() {
+export function renderCompleted() {
   let renderCompletedHTML = '';
   completedTodoList.forEach((todoItem, index) => {
     renderCompletedHTML += `
@@ -86,6 +86,9 @@ function renderCompleted() {
       }
     });
   });
+
+  // checkbox event listener
+  
 }
 
 

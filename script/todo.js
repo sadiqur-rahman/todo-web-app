@@ -1,4 +1,4 @@
-import { completedTodo, updateCompletedCount } from './completed.js';
+import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
 
 export const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
@@ -174,6 +174,7 @@ function renderTodo() {
       updatePendingCount();
     });
   });
+  renderCompleted();
 };
 
 
