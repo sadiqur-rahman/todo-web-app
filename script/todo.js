@@ -1,6 +1,14 @@
 import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
 
-export const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+export let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+
+// remove invalid items:
+todoList = todoList.filter(item => item && typeof item.todo === 'string');
+// re-save cleaned list:
+localStorage.setItem('todoList', JSON.stringify(todoList));
+
+
+console.log(todoList); // shows todo list in console
 
 // check todo status on page load
 checkTodoStatus();
@@ -62,12 +70,9 @@ function getTodoInput() {
 
 // Adds the Todo into array
 function addTodo(todo, date){
-  const todoObject = {
-    todo,
-    date
-  };
+  if (!todo || typeof todo !== 'string') return; // skip invalid
+  const todoObject = { todo, date };
   todoList.push(todoObject);
-  // Save to local storage
   saveToLocal();
   checkTodoStatus();
 }
@@ -98,16 +103,17 @@ function checkTodoStatus() {
 function renderTodo() {
   let renderHTML = '';
   todoList.forEach((todoItem, index) => {
+    if (!todoItem || typeof todoItem.todo !== 'string') return;
     renderHTML += `
         <div class="todo-container">
           <div class="todo-checkbox">
-            <input class="todo-checkbox-input" data-index=${index} type="checkbox">
+            <input class="todo-checkbox-input" data-index="${index}" type="checkbox">
           </div>
 
-          <div class="todo-description js-todo-description" data-index=${index}>${todoItem.todo}</div>
+          <div class="todo-description js-todo-description" data-index="${index}">${todoItem.todo}</div>
 
           <div class="todo-date">
-            <div class="todo-due-date js-todo-due-date" data-index=${index}>${todoItem.date}</div>
+            <div class="todo-due-date js-todo-due-date" data-index="${index}">${todoItem.date}</div>
           </div>
           
           <div class="action-button">
@@ -209,8 +215,6 @@ export function updatePendingCount() {
   todoPending += todoListLength;
   pendingCountElement.textContent = todoPending;
 }
-
-
 
 
 

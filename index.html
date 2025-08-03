@@ -15,6 +15,7 @@
   <title>Todo-Me</title>
 </head>
 <body>
+  <!-- Todo app navbar -->
   <div class="todo-navbar">
     <div class="navbar-container">
 
@@ -34,41 +35,52 @@
 
     </div>
   </div>
-  
-  <div class="todo-display-container">
-    <div class="todo-status-div js-todo-status-div">
-      All Todos Completed.
-    </div>
 
-    <div class="pending-todo-title-container js-pending-todo-title-container">
-      <div class="pending-todo-title">Todos</div>
-      <div class="pending-todo-count js-pending-todo-count"></div>
-      <div></div>
-    </div>
-
-    <div class="todo-display js-todo-display">
-      <!-- Todo items will be rendered here -->
-    </div>
-  </div>
-
-  <div class="completed-container">
-    <!-- This div should be clickable -->
-    <div class="completed-title-container js-completed-title-container">
-      <div class="completed-title">Completed</div>
-      <div class="clear-all-button-container js-clear-all-button-container">
-        <button class="clear-all-button js-clear-all-button">Clear all</button>
+  <!-- Todo app full body -->
+  <div class="full-todo-body">
+    <div class="todo-status-div-container">
+      <div class="todo-status-div js-todo-status-div">
+        All Todos Completed.
       </div>
-      <div class="completed-count js-completed-count"></div>
-      <div></div>
-    </div>
 
-    <!-- This div should collapse after the click -->
-    <div class="completed-todo-display js-completed-todo-display">
-      
-      <!-- Completed todo items will be rendered here -->
+      <div class="todo-display-container">
+        <div class="pending-todo-title-container js-pending-todo-title-container">
+          <div class="pending-todo-title">Todos</div>
+          <div class="pending-todo-count js-pending-todo-count"></div>
+          <div></div>
+        </div>
 
+        <div class="todo-display js-todo-display">
+          <!-- Todo items will be rendered here -->
+        </div>
+      </div>
+
+      <div class="completed-container">
+        <!-- This div should be clickable -->
+        <div class="completed-title-container js-completed-title-container">
+          <div class="completed-title">Completed</div>
+          <div class="clear-all-button-container js-clear-all-button-container">
+            <button class="clear-all-button js-clear-all-button">Clear all</button>
+          </div>
+          <div class="completed-count js-completed-count"></div>
+          <div></div>
+        </div>
+
+        <!-- This div should collapse after the click -->
+        <div class="completed-todo-display js-completed-todo-display">
+          
+          <!-- Completed todo items will be rendered here -->
+
+        </div>
+      </div>
     </div>
   </div>
+  
+  
+
+  
+
+  
 
   <script type="module" src="/script/todo.js"></script>
   <script type="module" src="script/completed.js"></script>
