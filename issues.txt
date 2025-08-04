@@ -1,9 +1,14 @@
 1. turn off hover when no completed todo left
+
 2. fix the completed-container margin-top 
+
 3. add features: 
 3.1 clicking uncheck then immidietly 
 clicking check should stop undo completion function   
 3.2 edit and save any pending todo
+
 4. responsive design for mobile 
+
 5. make past date selection disable
+
 6. make the latest completed stay on top
