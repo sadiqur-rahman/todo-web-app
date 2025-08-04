@@ -4,6 +4,9 @@
 
 3. adding features: 
 3.1 edit and save any pending todo
+3.2 cancel button to revoke edit 
 
 4. responsive design for mobile 
   4.1: keep the due date below the todo description
+
+5. suggestion: make a number input field to take integer value only 

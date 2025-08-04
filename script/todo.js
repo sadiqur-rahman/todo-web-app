@@ -1,6 +1,6 @@
 import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
 
-import { editButtonPressed, saveButtonPressed } from './edit-todo.js';
+import { editButtonPressed, saveButtonPressed, cancelButonPresses } from './edit-todo.js';
 
 export let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
@@ -136,6 +136,8 @@ export function renderTodo() {
           <div class="action-button">
             <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
 
+            <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
+
             <button class="todo-edit-button js-todo-edit-button" data-index="${index}">Edit</button>
             
             <button class="todo-delete-button js-todo-delete-button" data-index="${index}">X</button>
@@ -147,6 +149,15 @@ export function renderTodo() {
   // render the HTML first to get all the buttons to query
   const todoDisplayElement = document.querySelector('.js-todo-display');
   todoDisplayElement.innerHTML = renderHTML;
+
+  // edit cancel button event listener
+  const cancelButtonElement = document.querySelectorAll('.js-edit-cancel-button');
+  cancelButtonElement.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const index = Number(button.dataset.index);
+      cancelButonPresses(index); // Call the cancel function
+    });
+  });
 
   // edit button event listener
   const editButtonElement = document.querySelectorAll('.js-todo-edit-button');

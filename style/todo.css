@@ -48,21 +48,12 @@
 }
 
 
-.todo-save-button, .todo-edit-button, .todo-delete-button {
+.todo-save-button, .edit-cancel-button, .todo-edit-button, .todo-delete-button {
   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
   margin-top: -3px;
   background-color: white;
-}
-
-.todo-save-button{
-  position: absolute;
-  visibility: hidden;
-  right: 45px;
-  height: 25px;
-  font-family: space mono;
-  box-shadow: 3px 3px 1px rgb(7, 133, 7);
 }
 
 .todo-edit-button {
@@ -74,6 +65,23 @@
   box-shadow: 3px 3px 1px 
 }
 
+.todo-save-button{
+  position: absolute;
+  visibility: hidden;
+  right: 115px;
+  height: 25px;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px rgb(7, 133, 7);
+}
+
+.edit-cancel-button {
+  position: absolute;
+  visibility: hidden;
+  right: 45px;
+  height: 25px;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px 
+}
 
 .todo-delete-button {
   position: absolute;
@@ -83,7 +91,7 @@
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
-.todo-save-button:hover, .todo-edit-button:hover, .todo-delete-button:hover {
+.todo-save-button:hover, .edit-cancel-button:hover, .todo-edit-button:hover, .todo-delete-button:hover {
   box-shadow: 4px 4px 1px black;
   cursor: pointer;
   background-color: rgb(230, 230, 230);
