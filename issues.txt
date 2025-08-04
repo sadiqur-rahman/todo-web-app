@@ -8,4 +8,4 @@
   3.5 edit and save any pending todo
 4. responsive design for mobile 
 5. make past date selection disable
-6. make the latest completed stay on top of completed list
+6. make the latest completed stay on top
