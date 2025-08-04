@@ -21,11 +21,14 @@ createButtonElement.addEventListener('click', () => {
 
 
 // blocking past dates picking
-const todoDateElement = document.querySelector('.js-date');
-const today = new Date().toISOString().split('T')[0];
-todoDateElement.min = today;
+function checkPastDate() {
+  const todoDateElement = document.querySelector('.js-date');
+  const today = new Date().toISOString().split('T')[0];
+  todoDateElement.min = today;
+  return today;
+}
 
-
+checkPastDate();
 
 // Get Todo and Date from input
 let timeoutId; // Declare a variable to hold the timeout ID
@@ -36,9 +39,11 @@ function getTodoInput() {
 
   const todoDescription = todoDescriptionElement.value.trim();
   const todoDate = todoDateElement.value;
-  
-  
 
+  if (todoDate < checkPastDate.today) {
+    todoDate = '';
+  }
+  
   clearTimeout(timeoutId); // clear any running alert timeout
 
 
