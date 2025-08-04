@@ -1,4 +1,4 @@
-import { todoList, deleteTodo, updatePendingCount, saveToLocal, renderTodo } from './todo.js';
+import { todoList, deleteTodo, updatePendingCount, saveToLocal, checkTodoStatus } from './todo.js';
 
 const completedTodoList = JSON.parse(localStorage.getItem('completedTodoList')) || [];
 
@@ -104,9 +104,6 @@ export function renderCompleted() {
           undoCompletedTodo(index);
           updateCompletedListDisplay();
         }, 1000); // Delay for 1 second before undoing
-
-        
-
       } else {
         completeTodoDescriptionElement[index].classList.add('todo-description-completed');
         completeTodoDateElement[index].classList.add('todo-date-completed');
@@ -120,6 +117,9 @@ export function renderCompleted() {
   console.log('Completed: ', completedTodoList); 
 }
 
+// Update completed list display
+// This function is called when the completed todo list is empty
+// to hide the completed section and reset the state.
 function updateCompletedListDisplay() {
   const completedDisplayElement = document.querySelector('.js-completed-todo-display');
   const completedTitleElement = document.querySelector('.js-completed-title-container');
@@ -143,9 +143,15 @@ function undoCompletedTodo(index) {
       saveToLocal(); // Save the updated todo list to local storage
       completedTodoList.splice(index, 1); // Remove the todo item from the completed list
       saveCompletedToLocal(); // Save the updated completed list to local storage
-      renderTodo(); // Re-render the todo display
-      renderCompleted(); // Re-render the completed todo display
+
+      // Update the UI after undo completion
+      checkTodoStatus(); // Check the status of the todo list
       updatePendingCount(); // Update the pending count
+
+      updateCompletedCount(); // Update the completed count
+      updateCompletedListDisplay(); // Update the completed list display
+      
+      renderCompleted(); // Re-render the completed todo display
     }
   }
 }

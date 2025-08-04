@@ -78,7 +78,7 @@ function addTodo(todo, date){
 
 
 // Checking todo status before rendering
-function checkTodoStatus() {
+export function checkTodoStatus() {
   const todoStatusDiv = document.querySelector('.js-todo-status-div');
   const pendingTodoContainerElement = document.querySelector('.pending-todo-title-container');
 
