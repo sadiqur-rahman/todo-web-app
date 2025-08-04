@@ -1,5 +1,7 @@
 import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
 
+import { editButtonPressed, saveButtonPressed } from './edit-todo.js';
+
 export let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 // remove invalid items:
@@ -15,6 +17,7 @@ turnOffPastDate();
 // create todo button event listener
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
+  console.log('Create button pressed');
   getTodoInput();
   updatePendingCount();
 });
@@ -145,6 +148,24 @@ export function renderTodo() {
   const todoDisplayElement = document.querySelector('.js-todo-display');
   todoDisplayElement.innerHTML = renderHTML;
 
+  // edit button event listener
+  const editButtonElement = document.querySelectorAll('.js-todo-edit-button');
+  editButtonElement.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const index = Number(button.dataset.index);
+      editButtonPressed(index); // Call the edit function
+    });
+  });
+
+  // save button event listener
+  const saveButtonElement = document.querySelectorAll('.js-todo-save-button');
+  saveButtonElement.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      const index = Number(button.dataset.index);
+      saveButtonPressed(index); // Call the save function
+    });
+  });
+
   // checkbox event listener
   const checkboxElement = document.querySelectorAll('.todo-checkbox-input');
   const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
@@ -194,6 +215,7 @@ export function renderTodo() {
 
 // delete button function
 export function deleteTodo(index) {
+  console.log('Delete button pressed for index:', index);
   todoList.splice(index, 1);
   // Save to local storage
   saveToLocal();
