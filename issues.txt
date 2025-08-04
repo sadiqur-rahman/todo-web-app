@@ -6,6 +6,7 @@
 3.1 edit and save any pending todo
 
 4. responsive design for mobile 
+  4.1: keep the due date below the todo description
 
 5. make past date selection disable
 
