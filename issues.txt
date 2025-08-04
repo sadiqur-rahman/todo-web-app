@@ -4,7 +4,7 @@
   3.1 undo any completed todo and update both counter - Done 
   3.2 after a undo, check for any completed todo left and if not then hide the clear-all button, revome completed display-active css - Done
   3.3 make undo complete on uncheck the checkbox
-  3.4 when no todo on pending list, undo completed todo does not show on pending html but shows on page reload
+  3.4 when no todo on pending list, undo completed todo does not show on pending html but shows on page reload - Done
   3.5 edit and save any pending todo
 4. responsive design for mobile 
 5. make past date selection disable
