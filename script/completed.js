@@ -93,6 +93,7 @@ export function renderCompleted() {
   const completeTodoDescriptionElement = document.querySelectorAll('.complete-todo-description');
   const completeTodoDateElement = document.querySelectorAll('.todo-due-date');
   
+  // checkbox for undo completed
   completeCheckboxElement.forEach((checkbox) => {
     checkbox.addEventListener('change', (event) => {
       const index = Number(checkbox.dataset.index);
@@ -101,8 +102,10 @@ export function renderCompleted() {
         completeTodoDescriptionElement[index].classList.remove('todo-description-completed');
         completeTodoDateElement[index].classList.remove('todo-date-completed');
         setTimeout(() => {
-          undoCompletedTodo(index);
-          updateCompletedListDisplay();
+          if (!checkbox.checked) {
+            undoCompletedTodo(index);
+            updateCompletedListDisplay();
+          }
         }, 1000); // Delay for 1 second before undoing
       } else {
         completeTodoDescriptionElement[index].classList.add('todo-description-completed');

@@ -135,6 +135,7 @@ export function renderTodo() {
   const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
   const todoDateElement = document.querySelectorAll('.js-todo-due-date');
 
+  // checkbox for completed
   checkboxElement.forEach((checkbox) => {
     checkbox.addEventListener('change', (event) => {
       const index = Number(checkbox.dataset.index);
