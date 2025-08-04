@@ -20,6 +20,11 @@ createButtonElement.addEventListener('click', () => {
 });
 
 
+// blocking past dates picking
+const todoDateElement = document.querySelector('.js-date');
+const today = new Date().toISOString().split('T')[0];
+todoDateElement.min = today;
+
 
 
 // Get Todo and Date from input
@@ -31,6 +36,8 @@ function getTodoInput() {
 
   const todoDescription = todoDescriptionElement.value.trim();
   const todoDate = todoDateElement.value;
+  
+  
 
   clearTimeout(timeoutId); // clear any running alert timeout
 

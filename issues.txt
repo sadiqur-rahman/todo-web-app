@@ -8,6 +8,6 @@
 4. responsive design for mobile 
   4.1: keep the due date below the todo description
 
-5. make past date selection disable
+5. make the manual past date inputting disable 
 
-6. make the latest completed stay on top
+6. make the latest completed todo show first 
