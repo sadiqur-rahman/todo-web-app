@@ -7,28 +7,31 @@ todoList = todoList.filter(item => item && typeof item.todo === 'string');
 // re-save cleaned list:
 localStorage.setItem('todoList', JSON.stringify(todoList));
 
-// check todo status on page load
 checkTodoStatus();
 updatePendingCount();
 updateCompletedCount();
+turnOffPastDate();
 
+// create todo button event listener
 const createButtonElement = document.querySelector('.js-todo-create-button');
 createButtonElement.addEventListener('click', () => {
-  // get the todo description and date from input fields before clearing them
   getTodoInput();
   updatePendingCount();
 });
 
-
 // blocking past dates picking
-function checkPastDate() {
+function turnOffPastDate() {
   const todoDateElement = document.querySelector('.js-date');
   const today = new Date().toISOString().split('T')[0];
   todoDateElement.min = today;
   return today;
 }
 
-checkPastDate();
+// Check if the input date is valid
+function checkInputDate(dateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  return dateInput === '' || dateInput >= today; // allow empty date
+}
 
 // Get Todo and Date from input
 let timeoutId; // Declare a variable to hold the timeout ID
@@ -36,46 +39,55 @@ function getTodoInput() {
   const todoDescriptionElement = document.querySelector('.js-description');
   const todoDateElement = document.querySelector('.js-date');
   const emptyTodoDiv = document.querySelector('.js-empty-todo-div');
+  const pastDateDiv = document.querySelector('.js-past-date-div');
 
   const todoDescription = todoDescriptionElement.value.trim();
   const todoDate = todoDateElement.value;
-
-  if (todoDate < checkPastDate.today) {
-    todoDate = '';
-  }
   
   clearTimeout(timeoutId); // clear any running alert timeout
 
-
-  // Display an alert if the input is empty, empty date is allowed
+  // empty input handeler, empty date is allowed
   if (todoDescription) {
-    if (todoDate) {
+    // if the description is not empty, check the date not empty
+    if (!todoDate) {
+      addTodo(todoDescription, ''); // add todo with empty date
+      checkTodoStatus(); // Check the status of the todo list
+      renderTodo(); // Render the todo list
+      // clear input fields
+      todoDescriptionElement.value = '';
+      todoDateElement.value = '';
+      // hide alert immediately
+      emptyTodoDiv.classList.remove('empty-alert-div-active');
+      return; // exit the function if date is empty
+    } else if (checkInputDate(todoDate)) {
+      // if the date is valid, add the todo
       let todoDateWithText = '<b>Date: </b>' + String(todoDate);
       addTodo(todoDescription, todoDateWithText);
-  } else {
-      addTodo(todoDescription, todoDate);
+      checkTodoStatus(); // Check the status of the todo list
+      renderTodo(); // Render the todo list
+      // clear input fields
+      todoDescriptionElement.value = '';
+      todoDateElement.value = '';
+      // hide alert immediately
+      emptyTodoDiv.classList.remove('empty-alert-div-active');
+      return; // exit the function if date is valid 
+    } else {
+      // if the date is invalid, show alert
+      pastDateDiv.classList.add('past-date-div-active');
+      timeoutId = setTimeout(() => {
+        pastDateDiv.classList.remove('past-date-div-active');
+      }, 2000);
+      return; // exit the function if date is invalid
     }
-
-  // clear input fields
-  todoDescriptionElement.value = '';
-  todoDateElement.value = '';
-
-  // hide alert immediately
-  emptyTodoDiv.classList.remove('empty-alert-div-active');
-
   } else {
-    // no description: show alert
+    // if the description is empty, show alert
     emptyTodoDiv.classList.add('empty-alert-div-active');
-
     timeoutId = setTimeout(() => {
       emptyTodoDiv.classList.remove('empty-alert-div-active');
     }, 2000);
+    return; // exit the function if description is empty
   }
 }
-
-
-
-
 
 // Adds the Todo into array
 function addTodo(todo, date){
@@ -85,9 +97,6 @@ function addTodo(todo, date){
   saveToLocal();
   checkTodoStatus();
 }
-
-
-
 
 // Checking todo status before rendering
 export function checkTodoStatus() {
@@ -103,10 +112,6 @@ export function checkTodoStatus() {
   }
   renderTodo();
 }
-
-
-
-
 
 // Show the todo array by looping in the HTML
 export function renderTodo() {
@@ -140,8 +145,6 @@ export function renderTodo() {
   const todoDisplayElement = document.querySelector('.js-todo-display');
   todoDisplayElement.innerHTML = renderHTML;
 
-
-
   // checkbox event listener
   const checkboxElement = document.querySelectorAll('.todo-checkbox-input');
   const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
@@ -158,7 +161,6 @@ export function renderTodo() {
       // Add completed style
       todoDescriptionElement[index].classList.add('todo-description-completed');
       todoDateElement[index].classList.add('todo-date-completed');
-
       // Delay call to completedTodo only if still checked after 1s
       setTimeout(() => {
         if (checkbox.checked) {
@@ -175,9 +177,6 @@ export function renderTodo() {
     });
   });
 
-
-
-
   // Set data attribute = (index) to the delete button to match it. 
   // Select all the button elements, loop the buttons, add click listener on the button, 
   // get the index of deleting item 
@@ -193,10 +192,6 @@ export function renderTodo() {
   renderCompleted();
 };
 
-
-
-
-
 // delete button function
 export function deleteTodo(index) {
   todoList.splice(index, 1);
@@ -205,17 +200,10 @@ export function deleteTodo(index) {
   checkTodoStatus();
 };
 
-
-
-
-
 // Save to local storage
 export function saveToLocal() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
-
-
-
 
 // show total pending todo count
 export function updatePendingCount() {
@@ -225,11 +213,3 @@ export function updatePendingCount() {
   todoPending += todoListLength;
   pendingCountElement.textContent = todoPending;
 }
-
-
-
-
-
-
-
-

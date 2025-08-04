@@ -18,7 +18,7 @@
   justify-content: space-between; 
 }
 
-.todo-header-container{
+.todo-header-container {
   margin-bottom: 5px;
 }
 
@@ -29,21 +29,26 @@
 }
 
 .todo-alert-container {
-  display: block;
-  position: relative;
+  display: flex;
+  flex-direction: row;
   top: 0;
-  margin-bottom: 30px;
+  min-height: 24px;
 }
 
-.empty-todo-div {
-  display: none;
+.todo-alert-div {
+  flex: 1;
 }
 
-.empty-alert-div-active {
-  display: block;
-  padding-left: 10px;
-  position: absolute;
-  width: 100%;
+.date-alert-div {
+  width: 320px;
+}
+
+.empty-todo-div, .past-date-div {
+  visibility: hidden;
+}
+
+.empty-alert-div-active, .past-date-div-active {
+  visibility: visible;
   color: rgb(216, 11, 11);
   font-family: space mono;
 }
@@ -62,6 +67,7 @@
 .date{
   flex: 1;
   background-color: white;
+  color: rgb(139, 139, 139);
   appearance: none;
   padding-bottom: 2px;
 }

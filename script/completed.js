@@ -121,8 +121,6 @@ export function renderCompleted() {
 }
 
 // Update completed list display
-// This function is called when the completed todo list is empty
-// to hide the completed section and reset the state.
 function updateCompletedListDisplay() {
   const completedDisplayElement = document.querySelector('.js-completed-todo-display');
   const completedTitleElement = document.querySelector('.js-completed-title-container');
@@ -135,7 +133,6 @@ function updateCompletedListDisplay() {
     isCompletedTodoOpen = false;
   }
 }
-
 
 // undo completed todo function
 function undoCompletedTodo(index) {
@@ -169,7 +166,6 @@ function clearCompletedTodoButton(index) {
   }
 }
 
-
 // save completed todo to local storage
 function saveCompletedToLocal() {
   localStorage.setItem('completedTodoList', JSON.stringify(completedTodoList));
@@ -202,7 +198,6 @@ function makeTodoComplete(completedTodo, completedDate) {
   saveCompletedToLocal(); 
   renderCompleted(); // Re-render the completed todo display
 }
-
 
 // show total pending todo count
 export function updateCompletedCount() {
