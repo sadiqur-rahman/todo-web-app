@@ -193,7 +193,7 @@ function makeTodoComplete(completedTodo, completedDate) {
     todo: completedTodo,
     date: completedDate
   };
-  completedTodoList.push(todoObjectCompleted);
+  completedTodoList.unshift(todoObjectCompleted);
   // Save to local storage
   saveCompletedToLocal(); 
   renderCompleted(); // Re-render the completed todo display
