@@ -97,7 +97,7 @@ export function renderCompleted() {
     checkbox.addEventListener('change', (event) => {
       const index = Number(checkbox.dataset.index);
 
-      if (checkbox.checked) {
+      if (!checkbox.checked) {
         completeTodoDescriptionElement[index].classList.remove('todo-description-completed');
         completeTodoDateElement[index].classList.remove('todo-date-completed');
         setTimeout(() => {
