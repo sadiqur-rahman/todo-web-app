@@ -1,7 +1,9 @@
 > turn off hover when no completed todo left
 > fix the completed-container margin-top 
-> mobile friendly responsive design  
-  1. keep the due date below the todo description
+
+> important:
+  1. mobile friendly responsive design  
+    1.1. keep the due date below the todo description
 
 > features: 
   1. add the buttons: edit, save, cancel 
