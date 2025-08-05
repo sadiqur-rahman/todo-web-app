@@ -44,6 +44,7 @@ function getTodoInput() {
   const emptyTodoDiv = document.querySelector('.js-empty-todo-div');
   const pastDateDiv = document.querySelector('.js-past-date-div');
 
+  // get the input values and storing them in variables
   const todoDescription = todoDescriptionElement.value.trim();
   const todoDate = todoDateElement.value;
   
@@ -154,7 +155,7 @@ export function renderTodo() {
   const todoDisplayElement = document.querySelector('.js-todo-display');
   todoDisplayElement.innerHTML = renderHTML;
 
-  // edit cancel button event listener
+  // cancel button event listener
   const cancelButtonElement = document.querySelectorAll('.js-edit-cancel-button');
   cancelButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {

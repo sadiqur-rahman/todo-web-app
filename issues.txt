@@ -3,8 +3,7 @@
 2. fix the completed-container margin-top 
 
 3. adding features: 
-3.1 edit and save (only show after any changes are made) any pending todo
-3.2 cancel button to revoke edit 
+3.1 edit, save & cancel
 
 4. responsive design for mobile 
   4.1: keep the due date below the todo description
@@ -12,3 +11,87 @@
 5. suggestion: make a number input field to take integer value only. also use JS to check the paste values
 
 6. set flag priority tag 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+algorithm for editing and saving a todo:
+[this will be written on todo.js button event listeners]
+
+> on edit-todo.js create a function currentTodo(todo, date)
+  > get the current todo & date with .value
+    > store in temp variables: todo, date
+    > return the variables 
+      
+> on edit-todo.js create a function editedTodo(todo, date)
+  > get the edited todo & date with .value
+    > check for changes in the values like null todo 
+      > store in temp variables: todo, date
+      > return the variables
+      
+> event listeners: editButtonElement
+  [issue: how can I do one edit at a time ?]
+  > call currentTodo(todo, date)
+  > show editing todo, date fields [must be on HTML] 
+    [issue: how can I achieve this input fields on top of divs ?]
+    > use todo, date temp variables as palceholders / value for both fields
+  > call editButtonPressed()
+  > disable new todo create button
+
+> event listeners: saveButtonElement
+  > call editedTodo(todo, date)
+  > set updated todo, date to push to todoList
+  > hide the editing input and date fields
+  > call saveButtonPressed()
+  > call renderTodo()
+  > enable new todo create button
+
+> event listeners: cancelButtonElement
+  > clear edit fields
+  > call cancelButonPresses()
+  > hide editing todo, date fields [must be on HTML] 
+  > call renderTodo()
+  > enable new todo create button
+
+
+<issue> solving approaches:
+  1. How to allow only one edit at a time?
+  You want to prevent users from editing multiple todos simultaneously.
+  > Approach:
+      Keep track of an "editing state" globally or within your component.
+
+      When an edit button is clicked:
+
+      Check if there’s already an item being edited.
+
+      If yes, prevent opening a new edit input until the current one is saved or canceled.
+
+      Alternatively, before showing the new edit input, programmatically hide any existing edit inputs.
+
+  2. How to show input fields on top of todo divs?
+  You want the editable input fields to appear over the existing todo content, ideally aligned perfectly on top.
+
+  > Approach:
+      Use CSS position: absolute or position: relative on the container:
+
+      Wrap each todo item in a relatively positioned container (position: relative;).
+
+      Place the edit input fields inside this container with position: absolute; top: 0; left: 0; width: 100%; height: 100%; so they cover the todo text.
+
+      Toggle visibility:
+
+      Keep the todo text visible by default.
+
+      On edit, hide the text and show the input fields in the exact same container.

@@ -4,10 +4,15 @@ export function editButtonPressed(index) {
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
   const cancelButtonElement = document.querySelector(`.js-edit-cancel-button[data-index="${index}"]`);
+  const deleteButtonElement = document.querySelector(`.js-todo-delete-button[data-index="${index}"]`);
   
   // Hide the edit button
   editButtonElement.style.transition = 'none';
   editButtonElement.style.visibility = 'hidden'; 
+
+  // Hide the delete button
+  deleteButtonElement.style.transition = 'none';
+  deleteButtonElement.style.visibility = 'hidden';
 
   // Show the save button
   saveButtonElement.style.visibility = 'visible'; 
@@ -21,6 +26,7 @@ export function saveButtonPressed(index) {
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
   const cancelButtonElement = document.querySelector(`.js-edit-cancel-button[data-index="${index}"]`);
+  const deleteButtonElement = document.querySelector(`.js-todo-delete-button[data-index="${index}"]`);
   
   // Hide the save button after saving
   saveButtonElement.style.transition = 'none';
@@ -36,6 +42,8 @@ export function saveButtonPressed(index) {
   setTimeout(() => {
     savedMessageElement.style.visibility = 'hidden';
     editButtonElement.style.visibility = 'visible'; 
+    // Show the delete button
+    deleteButtonElement.style.visibility = 'visible';
   }, 1000); // Hide after 1 second
 }
 
@@ -45,6 +53,7 @@ export function cancelButonPresses(index) {
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
   const cancelButtonElement = document.querySelector(`.js-edit-cancel-button[data-index="${index}"]`);
+  const deleteButtonElement = document.querySelector(`.js-todo-delete-button[data-index="${index}"]`);
 
   // Hide the save button
   saveButtonElement.style.transition = 'none';
@@ -56,5 +65,9 @@ export function cancelButonPresses(index) {
   // Show the edit button
   editButtonElement.style.visibility = 'visible'; 
 
-  // Reset the todo description and date to original values
+  // Show the delete button
+  deleteButtonElement.style.visibility = 'visible';
 }
+
+// performing the editing of the todo items
+function editTodo() {}
