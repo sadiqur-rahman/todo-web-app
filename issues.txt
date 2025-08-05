@@ -14,8 +14,7 @@
   2. set flag priority tag 
 =======
 3. adding features: 
-3.1 edit and save (only show after any changes are made) any pending todo
-3.2 cancel button to revoke edit 
+3.1 edit, save & cancel
 
 > bugs: 
   1. multiple checkbox click handeling 
