@@ -3,7 +3,7 @@
 2. fix the completed-container margin-top 
 
 3. adding features: 
-3.1 edit and save any pending todo
+3.1 edit and save (only show after any changes are made) any pending todo
 3.2 cancel button to revoke edit 
 
 4. responsive design for mobile 
