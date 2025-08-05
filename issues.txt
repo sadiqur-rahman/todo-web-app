@@ -16,10 +16,11 @@
 3. adding features: 
 3.1 edit and save (only show after any changes are made) any pending todo
 3.2 cancel button to revoke edit 
->>>>>>> 33b3909 (new features update)
 
 > bugs: 
   1. multiple checkbox click handeling 
 
 > practice suggestion: 
   1. make a number input field to take integer value only. also use JS to check the paste values
+
+6. set flag priority tag 
