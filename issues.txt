@@ -43,6 +43,7 @@ algorithm for editing and saving a todo:
       
 > event listeners: editButtonElement
   [issue: how can I do one edit at a time ?]
+  > disable the others edit buttons
   > call currentTodo(todo, date)
   > show editing todo, date fields [must be on HTML] 
     [issue: how can I achieve this input fields on top of divs ?]
@@ -51,19 +52,22 @@ algorithm for editing and saving a todo:
   > disable new todo create button
 
 > event listeners: saveButtonElement
+  > enable all the edit buttons 
+  > enable new todo create button
   > call editedTodo(todo, date)
   > set updated todo, date to push to todoList
   > hide the editing input and date fields
   > call saveButtonPressed()
   > call renderTodo()
-  > enable new todo create button
 
 > event listeners: cancelButtonElement
+  > eenable all the edit buttons 
+  > enable new todo create button
   > clear edit fields
   > call cancelButonPresses()
   > hide editing todo, date fields [must be on HTML] 
   > call renderTodo()
-  > enable new todo create button
+  > check the flag and enable all the edit button using loop
 
 
 <issue> solving approaches:
@@ -74,7 +78,7 @@ algorithm for editing and saving a todo:
 
       When an edit button is clicked:
 
-      Check if there’s already an item being edited.
+      Check if there’s already an item being edited. 
 
       If yes, prevent opening a new edit input until the current one is saved or canceled.
 
