@@ -47,6 +47,16 @@
   flex: 1;
 }
 
+.edit-saved-message {
+  position: absolute;
+  visibility: hidden;
+  right: 45px;
+  height: 25px;
+  font-family: space mono;
+  color: rgb(7, 133, 7);
+  font-size: 12px;
+}
+
 
 .todo-save-button, .edit-cancel-button, .todo-edit-button, .todo-delete-button {
   border: 1px solid black;

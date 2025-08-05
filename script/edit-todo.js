@@ -30,7 +30,13 @@ export function saveButtonPressed(index) {
   cancelButtonElement.style.visibility = 'hidden';
 
   // Show the edit button
-  editButtonElement.style.visibility = 'visible'; 
+  // Show the saved message for 1 second
+  const savedMessageElement = document.querySelector(`.js-edit-saved-message[data-index="${index}"]`);
+  savedMessageElement.style.visibility = 'visible';
+  setTimeout(() => {
+    savedMessageElement.style.visibility = 'hidden';
+    editButtonElement.style.visibility = 'visible'; 
+  }, 1000); // Hide after 1 second
 }
 
 // Function to handle the cancel button press
