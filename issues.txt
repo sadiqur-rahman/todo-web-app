@@ -6,14 +6,14 @@
     1.1. keep the due date below the todo description
 
 > features: 
-  1. add the buttons: edit, save, cancel 
+  1. add the buttons: edit, save, cancel - Done
     1.2. edit
     1.3. save 
     1.4. cancel
   2. set flag priority tag 
 
 > bugs: 
-  1. multiple checkbox click handeling
+  1. multiple checkbox click handeling 
 
 > practice suggestion: 
   1. make a number input field to take integer value only. also use JS to check the paste values
