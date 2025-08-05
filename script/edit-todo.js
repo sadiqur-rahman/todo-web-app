@@ -4,12 +4,15 @@ export function editButtonPressed(index) {
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
   const cancelButtonElement = document.querySelector(`.js-edit-cancel-button[data-index="${index}"]`);
+  
+  // Hide the edit button
+  editButtonElement.style.transition = 'none';
+  editButtonElement.style.visibility = 'hidden'; 
+
   // Show the save button
   saveButtonElement.style.visibility = 'visible'; 
   // show the cancel button
   cancelButtonElement.style.visibility = 'visible';
-  // Hide the edit button
-  editButtonElement.style.visibility = 'hidden'; 
 }
 
 // Function to handle the save button press
@@ -18,12 +21,16 @@ export function saveButtonPressed(index) {
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
   const cancelButtonElement = document.querySelector(`.js-edit-cancel-button[data-index="${index}"]`);
+  
   // Hide the save button after saving
+  saveButtonElement.style.transition = 'none';
   saveButtonElement.style.visibility = 'hidden';
+  // Hide the cancel button
+  cancelButtonElement.style.transition = 'none';
+  cancelButtonElement.style.visibility = 'hidden';
+
   // Show the edit button
   editButtonElement.style.visibility = 'visible'; 
-  // Hide the cancel button
-  cancelButtonElement.style.visibility = 'hidden';
 }
 
 // Function to handle the cancel button press
@@ -32,11 +39,16 @@ export function cancelButonPresses(index) {
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
   const cancelButtonElement = document.querySelector(`.js-edit-cancel-button[data-index="${index}"]`);
+
   // Hide the save button
+  saveButtonElement.style.transition = 'none';
   saveButtonElement.style.visibility = 'hidden';
+  // Hide the cancel button
+  cancelButtonElement.style.transition = 'none';
+  cancelButtonElement.style.visibility = 'hidden';
+
   // Show the edit button
   editButtonElement.style.visibility = 'visible'; 
-  // Hide the cancel button
-  cancelButtonElement.style.visibility = 'hidden';
+
   // Reset the todo description and date to original values
 }
