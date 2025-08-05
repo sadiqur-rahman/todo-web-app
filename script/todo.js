@@ -134,6 +134,9 @@ export function renderTodo() {
           </div>
           
           <div class="action-button">
+
+            <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
+
             <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
 
             <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
@@ -141,6 +144,7 @@ export function renderTodo() {
             <button class="todo-edit-button js-todo-edit-button" data-index="${index}">Edit</button>
             
             <button class="todo-delete-button js-todo-delete-button" data-index="${index}">X</button>
+
           </div>
         </div>
       `;
