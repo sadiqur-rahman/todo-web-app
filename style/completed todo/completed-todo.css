@@ -1,7 +1,3 @@
-.todo-display-container {
-  position: relative;
-}
-
 .todo-status-div {
   display: none; 
   position: absolute;

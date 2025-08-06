@@ -12,7 +12,7 @@
 }
 
 .navbar-container {
-  max-width: 820px;  
+  max-width: 830px;  
   margin: 0 auto; 
   align-items: center;
   justify-content: space-between; 
@@ -55,24 +55,23 @@
 
 .todo-input-field {
   display: flex;
-  max-width: 834px;
+  width: 830px;
   gap: 10px;
 }
 
 .description{
   flex: 2;
-  background-color: white;
 }
 
 .date{
   flex: 1;
-  background-color: white;
   color: rgb(139, 139, 139);
   appearance: none;
   padding-bottom: 2px;
 }
 
 .description, .date {
+  background-color: white;
   font-family: space mono;
   padding-left: 10px;
   padding-right: 10px;
