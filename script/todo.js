@@ -155,23 +155,10 @@ export function renderTodo() {
   const todoDisplayElement = document.querySelector('.js-todo-display');
   todoDisplayElement.innerHTML = renderHTML;
 
-  
-
-
-
-
-
-
-
-
-
-
   // global variable for the currently edit
   let currentlyEditingId = null; // or index/key
-
   // edit button event listener
   const editButtonElement = document.querySelectorAll('.js-todo-edit-button');
-
   editButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
       const index = Number(button.dataset.index);
@@ -185,22 +172,18 @@ export function renderTodo() {
       // disable the edit button of other todos
       editButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'hidden'; // Hide other edit buttons
+          button.classList.add('disabled-button'); 
         }
       });
       // disable the delete button of other todos
-      const deleteButtonElement = document.querySelectorAll('.js-todo-delete-button');
       deleteButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'hidden'; // Hide other delete buttons
+          button.classList.add('disabled-button'); 
         }
       });
       // Disable the create button
       const createTodoElement = document.querySelector('.js-todo-create-button');
-      createTodoElement.classList.add('disabled-create-button');
-
-      // createTodoElement.style.visibility = 'hidden'; // Hide the create button  
-      // Call the edit function
+      createTodoElement.classList.add('disabled-button');
       editButtonPressed(index); // Call the edit function
     });
   });
@@ -214,23 +197,24 @@ export function renderTodo() {
       currentlyEditingId = null; // Reset the currently editing ID
       
       // enable the edit button of other todos
-      editButtonElement.forEach((button) => {
+      setTimeout(() => {
+        editButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'visible';
+          button.classList.remove('disabled-button'); 
         }
       });
-      
+      }, 1000);
       // enable the delete button of other todos
-      const deleteButtonElement = document.querySelectorAll('.js-todo-delete-button');
-      deleteButtonElement.forEach((button) => {
+      setTimeout(() => {
+        deleteButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'visible';
+          button.classList.remove('disabled-button'); 
         }
       });
-      
+      }, 1000);
       // Enable the create todo button
       const createTodoElement = document.querySelector('.js-todo-create-button');
-      createTodoElement.classList.remove('disabled-create-button');
+      createTodoElement.classList.remove('disabled-button');
       saveButtonPressed(index); // Call the save function
     });
   });
@@ -245,39 +229,21 @@ export function renderTodo() {
       // enable the edit button of other todos
       editButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'visible'; // Hide other edit buttons
+          button.classList.remove('disabled-button'); 
         }
       });
       // enable the delete button of other todos
-      const deleteButtonElement = document.querySelectorAll('.js-todo-delete-button');
       deleteButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'visible'; // Hide other delete buttons
+          button.classList.remove('disabled-button'); 
         }
       });
       // Show the create todo button
       const createTodoElement = document.querySelector('.js-todo-create-button');
-      createTodoElement.classList.remove('disabled-create-button');
+      createTodoElement.classList.remove('disabled-button');
       cancelButonPresses(index); // Call the cancel function
     });
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // checkbox event listener
   const checkboxElement = document.querySelectorAll('.todo-checkbox-input');
@@ -311,10 +277,7 @@ export function renderTodo() {
     });
   });
 
-  // Set data attribute = (index) to the delete button to match it. 
-  // Select all the button elements, loop the buttons, add click listener on the button, 
-  // get the index of deleting item 
-  // call the delete function
+  // delete button event listener
   const deleteButtonElement = document.querySelectorAll('.js-todo-delete-button');
   deleteButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {

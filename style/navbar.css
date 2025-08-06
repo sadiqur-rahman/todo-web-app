@@ -98,11 +98,7 @@
   transition: 0.3s;
 }
 
-.disabled-create-button {
-  pointer-events: none;
-  opacity: 0.5;
-  cursor: default;
-}
+
 
 
 
