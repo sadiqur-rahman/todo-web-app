@@ -53,3 +53,9 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
+
+.disabled-button {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
