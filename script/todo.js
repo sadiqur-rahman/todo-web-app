@@ -171,8 +171,6 @@ export function renderTodo() {
 
   // edit button event listener
   const editButtonElement = document.querySelectorAll('.js-todo-edit-button');
-  // create todo element 
-  const createTodoElement = document.querySelector('.js-todo-create-button');
 
   editButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
@@ -197,8 +195,11 @@ export function renderTodo() {
           button.style.visibility = 'hidden'; // Hide other delete buttons
         }
       });
-      // Hide the create todo button
-      createTodoElement.style.visibility = 'hidden'; // Hide the create button  
+      // Disable the create button
+      const createTodoElement = document.querySelector('.js-todo-create-button');
+      createTodoElement.classList.add('disabled-create-button');
+
+      // createTodoElement.style.visibility = 'hidden'; // Hide the create button  
       // Call the edit function
       editButtonPressed(index); // Call the edit function
     });
@@ -211,21 +212,25 @@ export function renderTodo() {
       const index = Number(button.dataset.index);
       // unflag the currently editing ID
       currentlyEditingId = null; // Reset the currently editing ID
+      
       // enable the edit button of other todos
       editButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'visible'; // Hide other edit buttons
+          button.style.visibility = 'visible';
         }
       });
-      // disable the delete button of other todos
+      
+      // enable the delete button of other todos
       const deleteButtonElement = document.querySelectorAll('.js-todo-delete-button');
       deleteButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
-          button.style.visibility = 'visible'; // Hide other delete buttons
+          button.style.visibility = 'visible';
         }
       });
-      // Show the create todo button
-      createTodoElement.style.visibility = 'visible'; // Hide the create button 
+      
+      // Enable the create todo button
+      const createTodoElement = document.querySelector('.js-todo-create-button');
+      createTodoElement.classList.remove('disabled-create-button');
       saveButtonPressed(index); // Call the save function
     });
   });
@@ -251,7 +256,8 @@ export function renderTodo() {
         }
       });
       // Show the create todo button
-      createTodoElement.style.visibility = 'visible'; // Hide the create button 
+      const createTodoElement = document.querySelector('.js-todo-create-button');
+      createTodoElement.classList.remove('disabled-create-button');
       cancelButonPresses(index); // Call the cancel function
     });
   });

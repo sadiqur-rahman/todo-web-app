@@ -101,6 +101,12 @@
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
+.disabled-delete-button {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
 .todo-save-button:hover, .edit-cancel-button:hover, .todo-edit-button:hover, .todo-delete-button:hover {
   box-shadow: 4px 4px 1px black;
   cursor: pointer;
