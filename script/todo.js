@@ -123,6 +123,11 @@ export function renderTodo() {
   todoList.forEach((todoItem, index) => {
     if (!todoItem || typeof todoItem.todo !== 'string') return;
     renderHTML += `
+        <div class="edit-todo-container">
+          <input class="edit-todo-input js-edit-todo-input" type="text" value="${todoItem.todo}">
+          <input class="edit-date-input js-edit-date-input" type="date" value="${todoItem.date}" min="">
+        </div>
+
         <div class="todo-container">
           <div class="todo-checkbox">
             <input class="todo-checkbox-input" data-index="${index}" type="checkbox">

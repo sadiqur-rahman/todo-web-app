@@ -1,0 +1,31 @@
+.edit-todo-container {
+  position: relative;
+  width: 830px;
+  z-index: 1;
+  top: 10px;
+}
+
+.edit-todo-input {
+  width: 400px;
+  height: auto;
+}
+
+.edit-date-input{
+  width: 150px;
+  left: 450px;
+  color: rgb(139, 139, 139);
+  appearance: none;
+  padding-bottom: 2px;
+}
+
+.edit-todo-input, .edit-date-input {
+  position: absolute;
+  font-size: 15px;
+  font-family: space mono;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: white;
+  border: none;
+}

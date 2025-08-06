@@ -14,6 +14,7 @@ body {
 }
 
 .todo-display-container {
+  position: relative;
   padding-top: 20px;
 }
 

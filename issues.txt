@@ -8,9 +8,17 @@
 4. responsive design for mobile 
   4.1: keep the due date below the todo description
 
-5. suggestion: make a number input field to take integer value only. also use JS to check the paste values
+5. solving checkbox changed state  
+> mark checked on complete todo listener
+  > set the flag
 
-6. set flag priority tag 
+> mark unchecked
+  > unset the flag 
+
+> check checkbox flag on renderTodo 
+  > marked, set the DOM accordingly
+  > Unmarked, set the DOM accordingly
+
 
 
 
@@ -32,59 +40,41 @@ algorithm for editing and saving a todo:
 
 > on edit-todo.js create a function currentTodo(todo, date)
   > get the current todo & date with .value
-    > store in temp variables: todo, date
-    > return the variables 
+    > store in currentTodo variables
+    > return the currentTodo variables 
       
 > on edit-todo.js create a function editedTodo(todo, date)
+  > call currentTodo(todo, date)
   > get the edited todo & date with .value
-    > check for changes in the values like null todo 
-      > store in temp variables: todo, date
-      > return the variables
+    > check for null values 
+      > if null 
+        > assign currentTodo variables to editedTodo variables
+      > else 
+        > return the editedTodo variables
       
 > event listeners: editButtonElement
-  [issue: how can I do one edit at a time ?] - Done
-  > disable the others edit buttons - Done
-  > call currentTodo(todo, date)
-  > show editing todo, date fields [must be on HTML] 
-    [issue: how can I achieve this input fields on top of divs ?]
+  > call currentTodo()
+  > show input todo, date fields [must be on HTML] 
     > use todo, date temp variables as palceholders / value for both fields
   > call editButtonPressed()
-  > disable new todo create button - Done
 
 > event listeners: saveButtonElement
-  > enable all the edit buttons - Done
-  > enable new todo create button - Done
-  > call editedTodo(todo, date)
+  > call editedTodo()
   > set updated todo, date to push to todoList
   > hide the editing input and date fields
   > call saveButtonPressed()
   > call renderTodo()
 
 > event listeners: cancelButtonElement
-  > eenable all the edit buttons - Done
-  > enable new todo create button - Done
   > clear edit fields
   > call cancelButonPresses()
   > hide editing todo, date fields [must be on HTML] 
   > call renderTodo()
-  > check the flag and enable all the edit button using loop
 
 
-<issue> solving approaches:
-  1. How to allow only one edit at a time?
-  You want to prevent users from editing multiple todos simultaneously.
-  > Approach:
-      Keep track of an "editing state" globally or within your component.
 
-      When an edit button is clicked:
-
-      Check if there’s already an item being edited. 
-
-      If yes, prevent opening a new edit input until the current one is saved or canceled.
-
-      Alternatively, before showing the new edit input, programmatically hide any existing edit inputs.
-
-  2. How to show input fields on top of todo divs?
+Issues: 
+  1. How to show input fields on top of todo divs?
   You want the editable input fields to appear over the existing todo content, ideally aligned perfectly on top.
 
   > Approach:
