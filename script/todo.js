@@ -129,8 +129,8 @@ export function renderTodo() {
         </div>
 
         <div class="todo-container">
-          <div class="todo-checkbox">
-            <input class="todo-checkbox-input" data-index="${index}" type="checkbox">
+          <div class="todo-checkbox js-todo-checkbox">
+            <input class="todo-checkbox-input js-todo-checkbox-input" data-index="${index}" type="checkbox">
           </div>
 
           <div class="todo-description js-todo-description" data-index="${index}">${todoItem.todo}</div>
@@ -192,8 +192,12 @@ export function renderTodo() {
       editButtonPressed(index); // Call the edit function
 
       //show the edit todo input and date fields
-      const editTodoContainer = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
-      editTodoContainer.style.visibility = 'visible';
+      const editTodoContainerElement = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
+      editTodoContainerElement.style.visibility = 'visible';
+
+      // disable the checkbox of editing todo
+      const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
+      editingTodoCheckboxElement.style.visibility = 'hidden';
     });
   });
 
@@ -227,8 +231,12 @@ export function renderTodo() {
       saveButtonPressed(index); // Call the save function
 
       //hide the edit todo input and date fields
-      const editTodoContainer = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
-      editTodoContainer.style.visibility = 'hidden';
+      const editTodoContainerElement = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
+      editTodoContainerElement.style.visibility = 'hidden';
+
+      // enable the checkbox of editing todo
+      const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
+      editingTodoCheckboxElement.style.visibility = 'visible';
     });
   });
 
@@ -257,13 +265,17 @@ export function renderTodo() {
       cancelButonPresses(index); // Call the cancel function
 
       //hide the edit todo input and date fields
-      const editTodoContainer = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
-      editTodoContainer.style.visibility = 'hidden';
+      const editTodoContainerElement = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
+      editTodoContainerElement.style.visibility = 'hidden';
+
+      // enable the checkbox of editing todo
+      const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
+      editingTodoCheckboxElement.style.visibility = 'visible';
     });
   });
 
   // checkbox event listener
-  const checkboxElement = document.querySelectorAll('.todo-checkbox-input');
+  const checkboxElement = document.querySelectorAll('.js-todo-checkbox-input');
   const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
   const todoDateElement = document.querySelectorAll('.js-todo-due-date');
 
