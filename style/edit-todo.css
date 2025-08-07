@@ -4,16 +4,17 @@
   width: 830px;
   z-index: 1;
   top: 10px;
+  left: 40px;
 }
 
 .edit-todo-input {
-  width: 400px;
+  width: 360px;
   height: auto;
 }
 
 .edit-date-input{
   width: 150px;
-  left: 450px;
+  left: 410px;
   color: rgb(139, 139, 139);
   appearance: none;
   padding-bottom: 2px;
