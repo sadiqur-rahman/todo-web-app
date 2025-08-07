@@ -71,21 +71,7 @@ algorithm for editing and saving a todo:
   > hide editing todo, date fields [must be on HTML] 
   > call renderTodo()
 
-
-
-Issues: 
-  1. How to show input fields on top of todo divs?
-  You want the editable input fields to appear over the existing todo content, ideally aligned perfectly on top.
-
-  > Approach:
-      Use CSS position: absolute or position: relative on the container:
-
-      Wrap each todo item in a relatively positioned container (position: relative;).
-
-      Place the edit input fields inside this container with position: absolute; top: 0; left: 0; width: 100%; height: 100%; so they cover the todo text.
-
-      Toggle visibility:
-
-      Keep the todo text visible by default.
-
-      On edit, hide the text and show the input fields in the exact same container.
+before saving a edited todo, 
+  check empty todo, 
+  check the edited date, 
+    then active the save button  

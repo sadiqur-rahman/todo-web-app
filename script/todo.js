@@ -1,40 +1,16 @@
 import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
-
 import { editButtonPressed, saveButtonPressed, cancelButonPresses } from './edit-todo.js';
-
 export let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 // remove invalid items:
 todoList = todoList.filter(item => item && typeof item.todo === 'string');
 // re-save cleaned list:
 localStorage.setItem('todoList', JSON.stringify(todoList));
-
+// call function 
 checkTodoStatus();
 updatePendingCount();
 updateCompletedCount();
 turnOffPastDate();
-
-// create todo button event listener
-const createButtonElement = document.querySelector('.js-todo-create-button');
-createButtonElement.addEventListener('click', () => {
-  console.log('Create button pressed');
-  getTodoInput();
-  updatePendingCount();
-});
-
-// blocking past dates picking
-function turnOffPastDate() {
-  const todoDateElement = document.querySelector('.js-date');
-  const today = new Date().toISOString().split('T')[0];
-  todoDateElement.min = today;
-  return today;
-}
-
-// Check if the input date is valid
-function checkInputDate(dateInput) {
-  const today = new Date().toISOString().split('T')[0];
-  return dateInput === '' || dateInput >= today; // allow empty date
-}
 
 // Get Todo and Date from input
 let timeoutId; // Declare a variable to hold the timeout ID
@@ -124,8 +100,8 @@ export function renderTodo() {
     if (!todoItem || typeof todoItem.todo !== 'string') return;
     renderHTML += `
         <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
-          <input class="edit-todo-input js-edit-todo-input data-index="${index}" type="text" value="${todoItem.todo}">
-          <input class="edit-date-input js-edit-date-input data-index="${index}" type="date" value="${todoItem.date}" min="">
+          <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="${todoItem.todo}">
+          <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="${todoItem.date}" min="">
         </div>
 
         <div class="todo-container">
@@ -161,12 +137,15 @@ export function renderTodo() {
   todoDisplayElement.innerHTML = renderHTML;
 
   // global variable for the currently edit
-  let currentlyEditingId = null; // or index/key
+  let currentlyEditingId = null; 
 
   // edit button event listener
   const editButtonElement = document.querySelectorAll('.js-todo-edit-button');
   editButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
+      const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
+      const todoDateElement = document.querySelectorAll('.js-todo-due-date'); // assuming you have this
+
       const index = Number(button.dataset.index);
       // If already editing, do nothing
       if (currentlyEditingId !== null && currentlyEditingId !== index) {
@@ -196,12 +175,14 @@ export function renderTodo() {
           button.classList.add('disabled-button'); 
         }
       });
+
       // disable the delete button of other todos
       deleteButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
           button.classList.add('disabled-button'); 
         }
       });
+
       // Disable the create button
       const createTodoElement = document.querySelector('.js-todo-create-button');
       createTodoElement.classList.add('disabled-button');
@@ -214,6 +195,15 @@ export function renderTodo() {
       // disable the checkbox of editing todo
       const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
       editingTodoCheckboxElement.style.visibility = 'hidden';
+
+      // disable past date picking in editing
+      blockPastDateOnEdit(index);
+
+      // hide this todo description
+      todoDescriptionElement[index].style.visibility = 'hidden';
+
+      // hide this todo date
+      todoDateElement[index].style.visibility = 'hidden';
     });
   });
 
@@ -221,6 +211,9 @@ export function renderTodo() {
   const saveButtonElement = document.querySelectorAll('.js-todo-save-button');
   saveButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
+      const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
+      const todoDateElement = document.querySelectorAll('.js-todo-due-date'); // assuming you have this
+
       const index = Number(button.dataset.index);
       // unflag the currently editing ID
       currentlyEditingId = null; // Reset the currently editing ID
@@ -267,6 +260,10 @@ export function renderTodo() {
       // enable the checkbox of editing todo
       const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
       editingTodoCheckboxElement.style.visibility = 'visible';
+      // show description
+      todoDescriptionElement[index].style.visibility = 'visible';
+      // show date
+      todoDateElement[index].style.visibility = 'visible';
     });
   });
 
@@ -274,6 +271,8 @@ export function renderTodo() {
   const cancelButtonElement = document.querySelectorAll('.js-edit-cancel-button');
   cancelButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
+      const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
+      const todoDateElement = document.querySelectorAll('.js-todo-due-date'); // assuming you have this
       const index = Number(button.dataset.index);
       // unflag the currently editing ID
       currentlyEditingId = null; // Reset the currently editing ID
@@ -316,11 +315,10 @@ export function renderTodo() {
       // enable the checkbox of editing todo
       const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
       editingTodoCheckboxElement.style.visibility = 'visible';
-
-      // show the todo description
-
-      // show the todo date
-      
+      // show description
+      todoDescriptionElement[index].style.visibility = 'visible';
+      // show date
+      todoDateElement[index].style.visibility = 'visible';
     });
   });
 
@@ -367,6 +365,45 @@ export function renderTodo() {
   });
   renderCompleted();
 };
+
+// create todo button event listener
+const createButtonElement = document.querySelector('.js-todo-create-button');
+createButtonElement.addEventListener('click', () => {
+  console.log('Create button pressed');
+  getTodoInput();
+  updatePendingCount();
+});
+
+// blocking past date picking function
+function turnOffPastDate() {
+  const todoDateElement = document.querySelector('.js-date');
+  const today = new Date().toISOString().split('T')[0];
+  todoDateElement.min = today;
+  return today;
+}
+
+// blocking past date picking in editing function
+function blockPastDateOnEdit(index) {
+  const editDateInput = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
+  const today = new Date().toISOString().split('T')[0];
+  editDateInput.min = today;
+  return today;
+}
+
+// check edited date validity
+function checkEditedDate(index) {
+  const input = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
+  if (!input) return;
+  const today = new Date().toISOString().split('T')[0];
+  input.min = today;
+  return today;
+}
+
+// Check if the input/pasted date while creating is valid or not function
+function checkInputDate(dateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  return dateInput === '' || dateInput >= today; // allow empty date
+}
 
 // delete button function
 export function deleteTodo(index) {
