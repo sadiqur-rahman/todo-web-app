@@ -162,6 +162,7 @@ export function renderTodo() {
 
   // global variable for the currently edit
   let currentlyEditingId = null; // or index/key
+
   // edit button event listener
   const editButtonElement = document.querySelectorAll('.js-todo-edit-button');
   editButtonElement.forEach((button) => {
@@ -174,6 +175,21 @@ export function renderTodo() {
       }
       currentlyEditingId = index; // Set the currently editing ID
       console.log('Edit button pressed for index:', index);
+
+      // hide the other todo descriptions
+      todoDescriptionElement.forEach((description) => {
+        if (description.dataset.index != String(index)) {
+          description.classList.add('disable-todo-description');
+        }
+      });
+
+      // hide the other todo dates
+       todoDateElement.forEach((description) => {
+        if (description.dataset.index != String(index)) {
+          description.classList.add('disable-todo-description');
+        }
+      });
+
       // disable the edit button of other todos
       editButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
@@ -209,6 +225,20 @@ export function renderTodo() {
       // unflag the currently editing ID
       currentlyEditingId = null; // Reset the currently editing ID
       
+      // show the other todo descriptions
+      todoDescriptionElement.forEach((description) => {
+        if (description.dataset.index != String(index)) {
+          description.classList.remove('disable-todo-description');
+        }
+      });
+
+      // show the other todo dates
+       todoDateElement.forEach((description) => {
+        if (description.dataset.index != String(index)) {
+          description.classList.remove('disable-todo-description');
+        }
+      });
+
       // enable the edit button of other todos
       setTimeout(() => {
         editButtonElement.forEach((button) => {
@@ -247,6 +277,21 @@ export function renderTodo() {
       const index = Number(button.dataset.index);
       // unflag the currently editing ID
       currentlyEditingId = null; // Reset the currently editing ID
+      
+      // show the other todo descriptions
+      todoDescriptionElement.forEach((description) => {
+        if (description.dataset.index != String(index)) {
+          description.classList.remove('disable-todo-description');
+        }
+      });
+
+      // show the other todo dates
+       todoDateElement.forEach((description) => {
+        if (description.dataset.index != String(index)) {
+          description.classList.remove('disable-todo-description');
+        }
+      });
+
       // enable the edit button of other todos
       editButtonElement.forEach((button) => {
         if (button.dataset.index !== String(index)) {
@@ -271,6 +316,11 @@ export function renderTodo() {
       // enable the checkbox of editing todo
       const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
       editingTodoCheckboxElement.style.visibility = 'visible';
+
+      // show the todo description
+
+      // show the todo date
+      
     });
   });
 

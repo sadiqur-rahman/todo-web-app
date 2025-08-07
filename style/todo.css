@@ -123,3 +123,7 @@
   opacity: 0.5;
   cursor: default;
 }
+
+.disable-todo-description, .disable-todo-description {
+  opacity: 0.5;
+}
