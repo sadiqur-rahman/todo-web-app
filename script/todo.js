@@ -123,9 +123,9 @@ export function renderTodo() {
   todoList.forEach((todoItem, index) => {
     if (!todoItem || typeof todoItem.todo !== 'string') return;
     renderHTML += `
-        <div class="edit-todo-container">
-          <input class="edit-todo-input js-edit-todo-input" type="text" value="${todoItem.todo}">
-          <input class="edit-date-input js-edit-date-input" type="date" value="${todoItem.date}" min="">
+        <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
+          <input class="edit-todo-input js-edit-todo-input data-index="${index}" type="text" value="${todoItem.todo}">
+          <input class="edit-date-input js-edit-date-input data-index="${index}" type="date" value="${todoItem.date}" min="">
         </div>
 
         <div class="todo-container">
@@ -190,6 +190,10 @@ export function renderTodo() {
       const createTodoElement = document.querySelector('.js-todo-create-button');
       createTodoElement.classList.add('disabled-button');
       editButtonPressed(index); // Call the edit function
+
+      //show the edit todo input and date fields
+      const editTodoContainer = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
+      editTodoContainer.style.visibility = 'visible';
     });
   });
 
@@ -221,6 +225,10 @@ export function renderTodo() {
       const createTodoElement = document.querySelector('.js-todo-create-button');
       createTodoElement.classList.remove('disabled-button');
       saveButtonPressed(index); // Call the save function
+
+      //hide the edit todo input and date fields
+      const editTodoContainer = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
+      editTodoContainer.style.visibility = 'hidden';
     });
   });
 
@@ -247,6 +255,10 @@ export function renderTodo() {
       const createTodoElement = document.querySelector('.js-todo-create-button');
       createTodoElement.classList.remove('disabled-button');
       cancelButonPresses(index); // Call the cancel function
+
+      //hide the edit todo input and date fields
+      const editTodoContainer = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
+      editTodoContainer.style.visibility = 'hidden';
     });
   });
 
