@@ -1,4 +1,5 @@
 .edit-todo-container {
+  visibility: hidden;
   position: relative;
   width: 830px;
   z-index: 1;
