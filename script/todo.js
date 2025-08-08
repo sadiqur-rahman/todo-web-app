@@ -10,7 +10,10 @@ localStorage.setItem('todoList', JSON.stringify(todoList));
 checkTodoStatus();
 updatePendingCount();
 updateCompletedCount();
-turnOffPastDate();
+
+// For new todo date:
+const todoDateElement = document.querySelector('.js-date');
+blockPastDate(todoDateElement);
 
 // Get Todo and Date from input
 let timeoutId; // Declare a variable to hold the timeout ID
@@ -196,8 +199,9 @@ export function renderTodo() {
       const editingTodoCheckboxElement = document.querySelector(`.js-todo-checkbox-input[data-index="${index}"]`);
       editingTodoCheckboxElement.style.visibility = 'hidden';
 
-      // disable past date picking in editing
-      blockPastDateOnEdit(index);
+      // disable past date for editing todo date:
+      const editDateInput = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
+      blockPastDate(editDateInput);
 
       // hide this todo description
       todoDescriptionElement[index].style.visibility = 'hidden';
@@ -374,28 +378,10 @@ createButtonElement.addEventListener('click', () => {
   updatePendingCount();
 });
 
-// blocking past date picking function
-function turnOffPastDate() {
-  const todoDateElement = document.querySelector('.js-date');
+// blocking past date selection function
+function blockPastDate(element) {
   const today = new Date().toISOString().split('T')[0];
-  todoDateElement.min = today;
-  return today;
-}
-
-// blocking past date picking in editing function
-function blockPastDateOnEdit(index) {
-  const editDateInput = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
-  const today = new Date().toISOString().split('T')[0];
-  editDateInput.min = today;
-  return today;
-}
-
-// check edited date validity
-function checkEditedDate(index) {
-  const input = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
-  if (!input) return;
-  const today = new Date().toISOString().split('T')[0];
-  input.min = today;
+  element.min = today;
   return today;
 }
 
