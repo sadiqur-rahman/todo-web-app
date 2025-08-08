@@ -30,21 +30,7 @@
   > marked, set the DOM accordingly
   > Unmarked, set the DOM accordingly
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+--------------------------------------------------------------
 
 algorithm for editing and saving a todo: [this will be written on todo.js button event listeners]
 
