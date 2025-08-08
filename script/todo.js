@@ -1,5 +1,5 @@
 import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
-import { editButtonPressed, saveButtonPressed, cancelButonPresses } from './edit-todo.js';
+import { editButtonPressed, saveButtonPressed, cancelButonPresses, storeCurrentTodoItem } from './edit-todo.js';
 export let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 // remove invalid items:
@@ -103,8 +103,8 @@ export function renderTodo() {
     if (!todoItem || typeof todoItem.todo !== 'string') return;
     renderHTML += `
         <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
-          <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="${todoItem.todo}">
-          <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="${todoItem.date}" min="">
+          <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="">
+          <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="" min="">
         </div>
 
         <div class="todo-container">
@@ -189,7 +189,9 @@ export function renderTodo() {
       // Disable the create button
       const createTodoElement = document.querySelector('.js-todo-create-button');
       createTodoElement.classList.add('disabled-button');
-      editButtonPressed(index); // Call the edit function
+      
+      // Call the edit function
+      editButtonPressed(index); 
 
       //show the edit todo input and date fields
       const editTodoContainerElement = document.querySelector(`.edit-todo-container[data-index="${index}"]`);
@@ -208,6 +210,26 @@ export function renderTodo() {
 
       // hide this todo date
       todoDateElement[index].style.visibility = 'hidden';
+
+      // Get the current todo text and date inside the edit click handler
+      const currentTodo = todoDescriptionElement[index].textContent.trim();
+      
+      // Get the current date inside the edit click handler
+      // first: get the full text date with value
+      let currentDateText = todoDateElement[index].textContent.trim(); // "Date: 2025-08-10"
+      // second: Trim the text part from date
+      let currentDate = currentDateText.replace("Date: ", "").trim(); // "2025-08-10"
+      
+      // set the current todo as values of the fields inside the edit click handler
+      const editingTodoInputElement = document.querySelector(`.js-edit-todo-input[data-index="${index}"]`);
+      editingTodoInputElement.value = currentTodo;
+
+      // set the current date as values of the fields inside the edit click handler
+      const editingDateInputElement = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
+      editingDateInputElement.value = currentDate;
+
+      // store the current todo and date
+      storeCurrentTodoItem(currentTodo, currentDate);
     });
   });
 

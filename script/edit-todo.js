@@ -76,5 +76,10 @@ export function cancelButonPresses(index) {
   deleteButtonElement.classList.remove('disabled-delete-button');
 }
 
-// performing the editing of the todo items
-function editTodo() {}
+// get current todo, date before editing
+export function storeCurrentTodoItem(currentTodo, currentDate) {
+  const currentTodoObject = {
+    todo: currentTodo,
+    date: currentDate
+  }
+}

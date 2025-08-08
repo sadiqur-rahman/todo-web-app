@@ -44,8 +44,6 @@ function clearAllCompletedTodo() {
   updateCompletedCount(); // Update the completed count
 } 
 
-
-
 // rendering completed todo function
 export function renderCompleted() {
   let renderCompletedHTML = '';

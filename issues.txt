@@ -19,32 +19,12 @@
   > marked, set the DOM accordingly
   > Unmarked, set the DOM accordingly
 
+--------------------------------------------------------------
 
+algorithm for editing and saving a todo: [this will be written on todo.js button event listeners]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-algorithm for editing and saving a todo:
-[this will be written on todo.js button event listeners]
-
-> on edit-todo.js create a function currentTodo(todo, date)
-  > get the current todo & date with .value
-    > store in currentTodo variables
-    > return the currentTodo variables 
-      
 > on edit-todo.js create a function editedTodo(todo, date)
-  > call currentTodo(todo, date)
+  > call currentTodoItem(todo, date)
   > get the edited todo & date with .value
     > check for null values 
       > if null 
@@ -53,10 +33,14 @@ algorithm for editing and saving a todo:
         > return the editedTodo variables
       
 > event listeners: editButtonElement
-  > call currentTodo()
-  > show input todo, date fields [must be on HTML] 
-    > use todo, date temp variables as palceholders / value for both fields
+  > show input value from todoList 
   > call editButtonPressed()
+    > Handel UI
+    > call currentTodoItem() import from todo-edit.js
+      > store in currentTodoObject 
+      > cconsole currentTodoObject 
+        > Bug: Todo does not show on edit date field
+        > Bug: Date does not show on edit date field
 
 > event listeners: saveButtonElement
   > call editedTodo()
@@ -71,7 +55,11 @@ algorithm for editing and saving a todo:
   > hide editing todo, date fields [must be on HTML] 
   > call renderTodo()
 
+-------------------------------------------------------
+
 before saving a edited todo, 
   check empty todo, 
   check the edited date, 
     then active the save button  
+
+
