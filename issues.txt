@@ -39,14 +39,15 @@ algorithm for editing and saving a todo: [this will be written on todo.js button
     > call currentTodoItem() import from todo-edit.js
       > store in currentTodoObject 
 
-> event listeners: saveButtonElement
+> event listeners: saveButtonElement - Done 
   > call editedTodo()
   > set updated todo, date to push to todoList
   > hide the editing input and date fields
   > call saveButtonPressed()
+  > call saveToLocal();
   > call renderTodo()
 
-> event listeners: cancelButtonElement
+> event listeners: cancelButtonElement - Done 
   > clear edit fields
   > call cancelButonPresses()
   > hide editing todo, date fields [must be on HTML] 
@@ -54,9 +55,7 @@ algorithm for editing and saving a todo: [this will be written on todo.js button
 
 -------------------------------------------------------
 
-before saving a edited todo, 
-  check empty todo, 
-  check the edited date, 
-    then active the save button  
-
-
+Bugs:
+  1. "Date:" text must show.
+  2. check empty todo
+  3. check past date typing
