@@ -12,13 +12,6 @@
 > mark checked on complete todo listener
   > set the flag
 
-> mark unchecked
-  > unset the flag 
-
-> check checkbox flag on renderTodo 
-  > marked, set the DOM accordingly
-  > Unmarked, set the DOM accordingly
-
 --------------------------------------------------------------
 
 algorithm for editing and saving a todo: [this will be written on todo.js button event listeners]
