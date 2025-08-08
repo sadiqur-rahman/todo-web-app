@@ -1,7 +1,7 @@
+import { todoList, saveToLocal, renderTodo } from "./todo.js";
+
 // Function to handle the edit button press
 export function editButtonPressed(index) {
-  console.log('Edit button pressed for index:', index);
-
   // elements
   const saveButtonElement = document.querySelector(`.js-todo-save-button[data-index="${index}"]`);
   const editButtonElement = document.querySelector(`.js-todo-edit-button[data-index="${index}"]`);
@@ -76,11 +76,22 @@ export function cancelButonPresses(index) {
   deleteButtonElement.classList.remove('disabled-delete-button');
 }
 
-// get current todo, date before editing
+// get current todo, date before editing into an object
 export function storeCurrentTodoItem(currentTodo, currentDate) {
   const currentTodoObject = {
     todo: currentTodo,
     date: currentDate
   }
-  console.log(currentTodoObject);
+  console.log('Current:', currentTodoObject);
+}
+
+// get the edited todo, date and add it to todoList that index
+export function storeEditedTodoItem(index, editedTodo, editedDate) {
+  todoList[index] = {
+    todo: editedTodo,
+    date: editedDate
+  }
+  saveToLocal();
+  renderTodo();
+  console.log('Edited:', todoList[index]);
 }

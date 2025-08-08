@@ -1,5 +1,5 @@
 import { completedTodo, updateCompletedCount, renderCompleted } from './completed.js';
-import { editButtonPressed, saveButtonPressed, cancelButonPresses, storeCurrentTodoItem } from './edit-todo.js';
+import { editButtonPressed, saveButtonPressed, cancelButonPresses, storeCurrentTodoItem, storeEditedTodoItem } from './edit-todo.js';
 export let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 // remove invalid items:
@@ -156,7 +156,6 @@ export function renderTodo() {
         return;
       }
       currentlyEditingId = index; // Set the currently editing ID
-      console.log('Edit button pressed for index:', index);
 
       // hide the other todo descriptions
       todoDescriptionElement.forEach((description) => {
@@ -220,14 +219,14 @@ export function renderTodo() {
       // second: Trim the text part from date
       let currentDate = currentDateText.replace("Date: ", "").trim(); // "2025-08-10"
       
-      // set the current todo as values of the fields inside the edit click handler
+      // define the element of the current todo as values of the fields inside the edit click handler
       const editingTodoInputElement = document.querySelector(`.js-edit-todo-input[data-index="${index}"]`);
-      editingTodoInputElement.value = currentTodo;
-
-      // set the current date as values of the fields inside the edit click handler
       const editingDateInputElement = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
-      editingDateInputElement.value = currentDate;
 
+      // set the current todo into field
+      editingTodoInputElement.value = currentTodo;
+      // set the current date 
+      editingDateInputElement.value = currentDate;
       // store the current todo and date
       storeCurrentTodoItem(currentTodo, currentDate);
     });
@@ -290,6 +289,17 @@ export function renderTodo() {
       todoDescriptionElement[index].style.visibility = 'visible';
       // show date
       todoDateElement[index].style.visibility = 'visible';
+
+      // define the element of the current todo as values of the fields inside the edit click handler
+      const editingTodoInputElement = document.querySelector(`.js-edit-todo-input[data-index="${index}"]`);
+      const editingDateInputElement = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
+
+      // get the edited todo 
+      const editedTodo = editingTodoInputElement.value;
+      // get the edited date 
+      const editedDate = editingDateInputElement.value;
+      // update with the edited todo and date
+      storeEditedTodoItem(index, editedTodo, editedDate); 
     });
   });
 
