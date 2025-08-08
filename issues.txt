@@ -58,14 +58,11 @@ algorithm for editing and saving a todo: [this will be written on todo.js button
         > return the editedTodo variables
       
 > event listeners: editButtonElement
-  > show input value from todoList 
+  > show input value from index click handeler
   > call editButtonPressed()
     > Handel UI
     > call currentTodoItem() import from todo-edit.js
       > store in currentTodoObject 
-      > cconsole currentTodoObject 
-        > Bug: Todo does not show on edit date field
-        > Bug: Date does not show on edit date field
 
 > event listeners: saveButtonElement
   > call editedTodo()
