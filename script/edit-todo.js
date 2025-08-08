@@ -82,4 +82,5 @@ export function storeCurrentTodoItem(currentTodo, currentDate) {
     todo: currentTodo,
     date: currentDate
   }
+  console.log(currentTodoObject);
 }
