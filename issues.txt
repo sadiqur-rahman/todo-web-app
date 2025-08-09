@@ -2,9 +2,6 @@
 
 2. fix the completed-container margin-top 
 
-3. adding features: 
-3.1 edit, save & cancel
-
 4. responsive design for mobile 
   4.1: keep the due date below the todo description
 
@@ -12,42 +9,6 @@
 > mark checked on complete todo listener
   > set the flag
 
---------------------------------------------------------------
-
-algorithm for editing and saving a todo: [this will be written on todo.js button event listeners]
-
-> on edit-todo.js create a function editedTodo(todo, date)
-  > call currentTodoItem(todo, date)
-  > get the edited todo & date with .value
-    > check for null values 
-      > if null 
-        > assign currentTodo variables to editedTodo variables
-      > else 
-        > return the editedTodo variables
-      
-> event listeners: editButtonElement
-  > show input value from index click handeler
-  > call editButtonPressed()
-    > Handel UI
-    > call currentTodoItem() import from todo-edit.js
-      > store in currentTodoObject 
-
-> event listeners: saveButtonElement - Done 
-  > call editedTodo()
-  > set updated todo, date to push to todoList
-  > hide the editing input and date fields
-  > call saveButtonPressed()
-  > call saveToLocal();
-  > call renderTodo()
-
-> event listeners: cancelButtonElement - Done 
-  > clear edit fields
-  > call cancelButonPresses()
-  > hide editing todo, date fields [must be on HTML] 
-  > call renderTodo()
-
 -------------------------------------------------------
 
 Bugs:
-  1. outdated todo's past date will not let it save if ediitng is performed, so make the past date selection enabled, but make it red.
-
