@@ -49,5 +49,5 @@ algorithm for editing and saving a todo: [this will be written on todo.js button
 -------------------------------------------------------
 
 Bugs:
-  1. hold the editing stae after the alert 
+  1. hold the editing state after the alert 
   2. outdated todo's past date will not let it save  
