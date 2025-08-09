@@ -36,20 +36,20 @@ function getTodoInput() {
     return;
   } 
   // check the date
-  let dateText = '';
+  //let dateText = '';
   // Check if date is provided
-  if (todoDate === '' || todoDate === null || todoDate === undefined) {
-    dateText = ''; // No date → keep empty
-  } else {
-    // Date is provided → validate
-    if (checkDateTodayOrLater(todoDate)) {
-      dateText = '<b>Date: </b>' + String(todoDate);
-    } else {
-      // past date make it red how?
-      dateText = '<b>Date: </b><span style="color:red;">' + String(todoDate) + '</span>';
-    }
-  }
-  addTodo(todoDescription, dateText); // dateText is repalced by totoDate
+  // if (todoDate === '' || todoDate === null || todoDate === undefined) {
+  //   dateText = ''; // No date → keep empty
+  // } else {
+  //   // Date is provided → validate
+  //   if (checkDateTodayOrLater(todoDate)) {
+  //     dateText = '<b>Date: </b>' + String(todoDate);
+  //   } else {
+  //     // past date make it red how?
+  //     dateText = '<b>Date: </b><span style="color:red;">' + String(todoDate) + '</span>';
+  //   }
+  // }
+  addTodo(todoDescription, todoDate); // dateText is repalced by totoDate
   checkTodoStatus();
   renderTodo();
   // Clear inputs
@@ -87,7 +87,20 @@ export function checkTodoStatus() {
 export function renderTodo() {
   let renderHTML = '';
   todoList.forEach((todoItem, index) => {
+    // checking each date and make it red if it is past on reload
+    let dateHTML = '';
+    if (todoItem.date) {
+      if (checkDateTodayOrLater(todoItem.date)) {
+        dateHTML = '<b>Date: </b>' + todoItem.date;
+      } else {
+        dateHTML = '<b>Date: </b><span style="color:red;">' + todoItem.date + '</span>';
+      }
+    } else {
+      dateHTML = '';
+    }
+    
     if (!todoItem || typeof todoItem.todo !== 'string') return;
+
     renderHTML += `
         <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
           <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="">
@@ -102,7 +115,7 @@ export function renderTodo() {
           <div class="todo-description js-todo-description" data-index="${index}">${todoItem.todo}</div>
 
           <div class="todo-date">
-            <div class="todo-due-date js-todo-due-date" data-index="${index}">${todoItem.date}</div>
+            <div class="todo-due-date js-todo-due-date" data-index="${index}">${dateHTML}</div>
           </div>
           
           <div class="action-button">
@@ -281,28 +294,33 @@ export function renderTodo() {
       const editingDateInputElement = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
 
       // get the edited todo 
-      let editedTodo = editingTodoInputElement.value;
+      const editedTodo = editingTodoInputElement.value;
       // get the edited date 
       const editedDate = editingDateInputElement.value;
 
-      // check empty description
-      if (!editedTodo) {
-        editedTodo = '(Empty Todo)';
-      }
-      // check if no date
+      // // check empty description
+      // if (!editedTodo) {
+      //   editedTodo = '(Empty Todo)';
+      // }
+      // // check if no date
+      // if (!editedDate) {
+      //   storeEditedTodoItem(index, editedTodo, editedDate);
+      //   return;
+      // }
+      // // check for date
+      // if (checkDateTodayOrLater(editedDate)) {
+      //   let editedTodoDateWithText = '<b>Date: </b>' + String(editedDate);
+      //   storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
+      //   return;
+      // }
+      // // past date make it red how?
+      // let editedTodoDateWithText = '<b>Date: </b><span style="color:red;">' + String(editedDate);
+
       if (!editedDate) {
-        storeEditedTodoItem(index, editedTodo, editedDate);
+        storeEditedTodoItem(index, editedTodo, '');
         return;
       }
-      // check for date
-      if (checkDateTodayOrLater(editedDate)) {
-        let editedTodoDateWithText = '<b>Date: </b>' + String(editedDate);
-        storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
-        return;
-      }
-      // past date make it red how?
-      let editedTodoDateWithText = '<b>Date: </b><span style="color:red;">' + String(editedDate);
-      storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
+      storeEditedTodoItem(index, editedTodo, editedDate);
     });
   });
 

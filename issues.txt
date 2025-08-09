@@ -1,18 +1,7 @@
-> turn off hover when no completed todo left
-> fix the completed-container margin-top 
+1. turn off hover when no completed todo left
 
-> important:
-  1. mobile friendly responsive design  
-    1.1. keep the due date below the todo description
+2. fix the completed-container margin-top 
 
-<<<<<<< HEAD
-> features: 
-  1. add the buttons: edit, save, cancel - Done
-    1.2. edit
-    1.3. save 
-    1.4. cancel
-  2. set flag priority tag 
-=======
 3. adding features: 
 3.1 edit, save & cancel
 
@@ -22,13 +11,6 @@
 5. solving checkbox changed state  
 > mark checked on complete todo listener
   > set the flag
-
-> mark unchecked
-  > unset the flag 
-
-> check checkbox flag on renderTodo 
-  > marked, set the DOM accordingly
-  > Unmarked, set the DOM accordingly
 
 --------------------------------------------------------------
 
@@ -67,5 +49,3 @@ algorithm for editing and saving a todo: [this will be written on todo.js button
 -------------------------------------------------------
 
 Bugs:
-  1. outdated todo's past date will not let it save if ediitng is performed, so make the past date selection enabled, but make it red.
-
