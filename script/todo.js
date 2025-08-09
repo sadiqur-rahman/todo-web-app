@@ -35,20 +35,6 @@ function getTodoInput() {
     }, 2000);
     return;
   } 
-  // check the date
-  //let dateText = '';
-  // Check if date is provided
-  // if (todoDate === '' || todoDate === null || todoDate === undefined) {
-  //   dateText = ''; // No date → keep empty
-  // } else {
-  //   // Date is provided → validate
-  //   if (checkDateTodayOrLater(todoDate)) {
-  //     dateText = '<b>Date: </b>' + String(todoDate);
-  //   } else {
-  //     // past date make it red how?
-  //     dateText = '<b>Date: </b><span style="color:red;">' + String(todoDate) + '</span>';
-  //   }
-  // }
   addTodo(todoDescription, todoDate); // dateText is repalced by totoDate
   checkTodoStatus();
   renderTodo();
@@ -297,24 +283,6 @@ export function renderTodo() {
       const editedTodo = editingTodoInputElement.value;
       // get the edited date 
       const editedDate = editingDateInputElement.value;
-
-      // // check empty description
-      // if (!editedTodo) {
-      //   editedTodo = '(Empty Todo)';
-      // }
-      // // check if no date
-      // if (!editedDate) {
-      //   storeEditedTodoItem(index, editedTodo, editedDate);
-      //   return;
-      // }
-      // // check for date
-      // if (checkDateTodayOrLater(editedDate)) {
-      //   let editedTodoDateWithText = '<b>Date: </b>' + String(editedDate);
-      //   storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
-      //   return;
-      // }
-      // // past date make it red how?
-      // let editedTodoDateWithText = '<b>Date: </b><span style="color:red;">' + String(editedDate);
 
       if (!editedDate) {
         storeEditedTodoItem(index, editedTodo, '');
