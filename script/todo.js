@@ -29,47 +29,41 @@ function getTodoInput() {
   
   clearTimeout(timeoutId); // clear any running alert timeout
 
-  // empty input handeler, empty date is allowed
-  if (todoDescription) {
-    // if the description is not empty, check the date not empty
-    if (!todoDate) {
-      addTodo(todoDescription, ''); // add todo with empty date
-      checkTodoStatus(); // Check the status of the todo list
-      renderTodo(); // Render the todo list
-      // clear input fields
-      todoDescriptionElement.value = '';
-      todoDateElement.value = '';
-      // hide alert immediately
-      emptyTodoDiv.classList.remove('empty-alert-div-active');
-      return; // exit the function if date is empty
-    } else if (checkInputDate(todoDate)) {
-      // if the date is valid, add the todo
-      let todoDateWithText = '<b>Date: </b>' + String(todoDate);
-      addTodo(todoDescription, todoDateWithText);
-      checkTodoStatus(); // Check the status of the todo list
-      renderTodo(); // Render the todo list
-      // clear input fields
-      todoDescriptionElement.value = '';
-      todoDateElement.value = '';
-      // hide alert immediately
-      emptyTodoDiv.classList.remove('empty-alert-div-active');
-      return; // exit the function if date is valid 
-    } else {
-      // if the date is invalid, show alert
-      pastDateDiv.classList.add('past-date-div-active');
-      timeoutId = setTimeout(() => {
-        pastDateDiv.classList.remove('past-date-div-active');
-      }, 2000);
-      return; // exit the function if date is invalid
-    }
-  } else {
-    // if the description is empty, show alert
+  // check empty description
+  if (todoDescription === '' || todoDescription === null || todoDescription === undefined) {
     emptyTodoDiv.classList.add('empty-alert-div-active');
-    timeoutId = setTimeout(() => {
+    timeoutId = setTimeout(function () {
       emptyTodoDiv.classList.remove('empty-alert-div-active');
     }, 2000);
-    return; // exit the function if description is empty
+    return;
+  } 
+  // check the date
+  let dateText = '';
+  // Check if date is provided
+  if (todoDate === '' || todoDate === null || todoDate === undefined) {
+    dateText = ''; // No date → keep empty
+  } else {
+    // Date is provided → validate
+    if (checkInputDate(todoDate)) {
+      dateText = '<b>Date: </b>' + String(todoDate);
+    } else {
+      // Invalid date → show alert and exit
+      pastDateDiv.classList.add('past-date-div-active');
+      timeoutId = setTimeout(function () {
+        pastDateDiv.classList.remove('past-date-div-active');
+      }, 2000);
+      return;
+    }
   }
+  // Common actions for valid description + valid/no date
+  addTodo(todoDescription, dateText);
+  checkTodoStatus();
+  renderTodo();
+  // Clear inputs
+  todoDescriptionElement.value = '';
+  todoDateElement.value = '';
+  // Hide description alert if visible
+  emptyTodoDiv.classList.remove('empty-alert-div-active');
 }
 
 // Adds the Todo into array
@@ -295,11 +289,27 @@ export function renderTodo() {
       const editingDateInputElement = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
 
       // get the edited todo 
-      const editedTodo = editingTodoInputElement.value;
+      let editedTodo = editingTodoInputElement.value;
       // get the edited date 
       const editedDate = editingDateInputElement.value;
-      // update with the edited todo and date
-      storeEditedTodoItem(index, editedTodo, editedDate); 
+
+      // check empty description
+      if (!editedTodo) {
+        editedTodo = '(Empty Todo)';
+      }
+      // check if no date
+      if (!editedDate) {
+        storeEditedTodoItem(index, editedTodo, editedDate);
+        return;
+      }
+      // check for date
+      if (checkInputDate(editedDate)) {
+        let editedTodoDateWithText = '<b>Date: </b>' + String(editedDate);
+        storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
+        return;
+      }
+      // if past date is given
+      alert('Todo due date cannot be in the past!');
     });
   });
 
