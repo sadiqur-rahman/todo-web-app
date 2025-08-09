@@ -39,15 +39,11 @@
   flex: 1;
 }
 
-.date-alert-div {
-  width: 320px;
-}
-
-.empty-todo-div, .past-date-div {
+.empty-todo-div {
   visibility: hidden;
 }
 
-.empty-alert-div-active, .past-date-div-active {
+.empty-alert-div-active {
   visibility: visible;
   color: rgb(216, 11, 11);
   font-family: space mono;

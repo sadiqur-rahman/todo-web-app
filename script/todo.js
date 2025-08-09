@@ -13,7 +13,6 @@ updateCompletedCount();
 
 // For new todo date:
 const todoDateElement = document.querySelector('.js-date');
-blockPastDate(todoDateElement);
 
 // Get Todo and Date from input
 let timeoutId; // Declare a variable to hold the timeout ID
@@ -21,7 +20,6 @@ function getTodoInput() {
   const todoDescriptionElement = document.querySelector('.js-description');
   const todoDateElement = document.querySelector('.js-date');
   const emptyTodoDiv = document.querySelector('.js-empty-todo-div');
-  const pastDateDiv = document.querySelector('.js-past-date-div');
 
   // get the input values and storing them in variables
   const todoDescription = todoDescriptionElement.value.trim();
@@ -44,19 +42,14 @@ function getTodoInput() {
     dateText = ''; // No date → keep empty
   } else {
     // Date is provided → validate
-    if (checkInputDate(todoDate)) {
+    if (checkDateTodayOrLater(todoDate)) {
       dateText = '<b>Date: </b>' + String(todoDate);
     } else {
-      // Invalid date → show alert and exit
-      pastDateDiv.classList.add('past-date-div-active');
-      timeoutId = setTimeout(function () {
-        pastDateDiv.classList.remove('past-date-div-active');
-      }, 2000);
-      return;
+      // past date make it red how?
+      dateText = '<b>Date: </b><span style="color:red;">' + String(todoDate) + '</span>';
     }
   }
-  // Common actions for valid description + valid/no date
-  addTodo(todoDescription, dateText);
+  addTodo(todoDescription, dateText); // dateText is repalced by totoDate
   checkTodoStatus();
   renderTodo();
   // Clear inputs
@@ -141,7 +134,7 @@ export function renderTodo() {
   editButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
       const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
-      const todoDateElement = document.querySelectorAll('.js-todo-due-date'); // assuming you have this
+      const todoDateElement = document.querySelectorAll('.js-todo-due-date');
 
       const index = Number(button.dataset.index);
       // If already editing, do nothing
@@ -196,7 +189,6 @@ export function renderTodo() {
 
       // disable past date for editing todo date:
       const editDateInput = document.querySelector(`.js-edit-date-input[data-index="${index}"]`);
-      blockPastDate(editDateInput);
 
       // hide this todo description
       todoDescriptionElement[index].style.visibility = 'hidden';
@@ -231,7 +223,7 @@ export function renderTodo() {
   saveButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
       const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
-      const todoDateElement = document.querySelectorAll('.js-todo-due-date'); // assuming you have this
+      const todoDateElement = document.querySelectorAll('.js-todo-due-date');
 
       const index = Number(button.dataset.index);
       // unflag the currently editing ID
@@ -303,13 +295,14 @@ export function renderTodo() {
         return;
       }
       // check for date
-      if (checkInputDate(editedDate)) {
+      if (checkDateTodayOrLater(editedDate)) {
         let editedTodoDateWithText = '<b>Date: </b>' + String(editedDate);
         storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
         return;
       }
-      // if past date is given
-      alert('Todo due date cannot be in the past!');
+      // past date make it red how?
+      let editedTodoDateWithText = '<b>Date: </b><span style="color:red;">' + String(editedDate);
+      storeEditedTodoItem(index, editedTodo, editedTodoDateWithText);
     });
   });
 
@@ -318,7 +311,7 @@ export function renderTodo() {
   cancelButtonElement.forEach((button) => {
     button.addEventListener('click', (event) => {
       const todoDescriptionElement = document.querySelectorAll('.js-todo-description');
-      const todoDateElement = document.querySelectorAll('.js-todo-due-date'); // assuming you have this
+      const todoDateElement = document.querySelectorAll('.js-todo-due-date');
       const index = Number(button.dataset.index);
       // unflag the currently editing ID
       currentlyEditingId = null; // Reset the currently editing ID
@@ -420,15 +413,8 @@ createButtonElement.addEventListener('click', () => {
   updatePendingCount();
 });
 
-// blocking past date selection function
-function blockPastDate(element) {
-  const today = new Date().toISOString().split('T')[0];
-  element.min = today;
-  return today;
-}
-
 // Check if the input/pasted date while creating is valid or not function
-function checkInputDate(dateInput) {
+function checkDateTodayOrLater(dateInput) {
   const today = new Date().toISOString().split('T')[0];
   return dateInput === '' || dateInput >= today; // allow empty date
 }
