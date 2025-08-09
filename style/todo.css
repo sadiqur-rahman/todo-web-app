@@ -27,18 +27,12 @@
   text-decoration: line-through;
 }
 
-.todo-date-completed {
-  text-decoration: line-through;
-}
-
 .todo-date {
   flex: 1;
 }
 
-
-
-.js-todo-date-inactive {
-  display: none;
+.todo-date-completed {
+  text-decoration: line-through;
 }
 
 .action-button {
