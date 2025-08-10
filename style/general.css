@@ -60,3 +60,12 @@ body {
   opacity: 0.5;
   cursor: default;
 }
+
+/* Apply styles for screens 600px wide or smaller */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 10px;
+    padding: 10px;
+  }
+  
+}

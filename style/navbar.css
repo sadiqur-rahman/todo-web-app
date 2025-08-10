@@ -9,6 +9,8 @@
   top: 0;
   left: 0;
   z-index: 1;
+  
+  padding: 10px;
 }
 
 .navbar-container {
@@ -95,5 +97,36 @@
 
 
 
+/* Apply styles for screens 600px wide or smaller */
+@media only screen and (max-width: 600px) {
+  .todo-navbar {
+    padding: 10px;
+    height: 235px;
+  }
 
+  .todo-header {
+    font-size: 25px;
+    padding: 10px;
+  }
+
+  .todo-input-field {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    gap: 10px;
+  }
+
+  .description {
+    min-height: 40px;
+  }
+
+  .date {
+    min-height: 40px;
+  }
+
+  .todo-create-button {
+    height: 40px;
+  }
+
+}
 
