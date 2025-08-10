@@ -15,11 +15,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todo-Me</title>
 </head>
+
 <body>
   <!-- Todo app navbar -->
   <div class="todo-navbar">
     <div class="navbar-container">
 
+      <!-- Todo app header -->
       <div class="todo-header-container">
         <div class="todo-header">Todo-Me</div>
       </div>
@@ -30,6 +32,7 @@
         </div>
       </div>
 
+      <!-- Todo app input container -->
       <div class="todo-input-field">
         <input class="description js-description" type="text" placeholder="Create a todo...">
         <input class="date js-date" type="date" min="">
@@ -42,16 +45,22 @@
   <!-- Todo app full body -->
   <div class="full-todo-body">
     <div class="todo-status-div-container">
+
+      <!-- all completed msg -->
       <div class="todo-status-div js-todo-status-div">
         All Todos Completed.
       </div>
 
-      <div class="todo-display-container">
-        <div class="pending-todo-title-container js-pending-todo-title-container">
+      <!-- Pending Todo bar -->
+      <div class="todo-pending-bar">
+        <div class="pending-todo-title-container">
           <div class="pending-todo-title">Todos</div>
           <div class="pending-todo-count js-pending-todo-count"></div>
-          <div></div>
         </div>
+      </div>
+
+      <div class="todo-display-container">
+        
 
         <div class="todo-display js-todo-display">
 
@@ -71,14 +80,12 @@
             <button class="clear-all-button js-clear-all-button">Clear all</button>
           </div>
           <div class="completed-count js-completed-count"></div>
-          <div></div>
         </div>
 
         <!-- This div should collapse after the click -->
         <div class="completed-todo-display js-completed-todo-display">
           
         <!-- Completed todo items will be rendered here -->
-
         </div>
       </div>
     </div>

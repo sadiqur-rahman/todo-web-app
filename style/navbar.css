@@ -3,6 +3,7 @@
   position: fixed;
   left: 0;
   right: 0;
+  height: 110px;
   padding: 20px;
   background-color: rgb(252, 217, 104);
   border-bottom: 5px solid black;
@@ -141,6 +142,5 @@
   .description, .date, .todo-create-button {
     flex: 1 1 100%;
   }
-
 }
 

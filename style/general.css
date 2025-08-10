@@ -1,26 +1,22 @@
 body {
   font-family: space mono;
   background-color: rgb(238, 238, 238);
+  padding: 10px;
 }
 
-.todo-status-completed {
-  display: block;
-}
-
-.todo-display-container {
+.todo-pending-bar{
   position: relative;
-  padding-top: 20px;
-}
-
-.todo-display {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: auto;
-  justify-items: center; 
+  width: 100%;
+  margin-top: 160px;
 }
 
 .pending-todo-title-container {
+  position: relative;
   display: none;
+  max-width: 830px;  
+  margin: 0 auto; 
+  align-items: center;
+  justify-content: space-between; 
 }
 
 .pending-todo-title-container-active {
@@ -29,7 +25,7 @@ body {
   justify-content: space-between;
   padding: 10px 20px;
   margin-top: 140px;
-  width: 800px;
+  max-width: 800px;
   justify-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -49,10 +45,27 @@ body {
   font-weight: bold;
 }
 
+.todo-status-completed {
+  display: block;
+}
+
+.todo-display-container {
+  position: relative;
+  width: 100%;
+}
+
+
 .disabled-button {
   pointer-events: none;
   opacity: 0.5;
   cursor: default;
+}
+
+.todo-display {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto;
+  justify-items: center; 
 }
 
 /* Apply styles for screens 600px wide or smaller */
@@ -61,9 +74,8 @@ body {
     font-size: 15px;
     padding: 10px;
   }
-  
-  .pending-todo-title-container-active {
+
+  .todo-pending-bar{
     margin-top: 250px;
   }
-
 }

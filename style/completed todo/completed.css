@@ -11,20 +11,17 @@
 
 .completed-container {
   position: relative;
-  display: flex;
-  width: 800px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  margin: 30px auto;
+  width: 100%;
+  margin-top: 30px;
 }
 
 .completed-title-container {
-  position: relative;
   display: flex;
-  width: 800px;
-  padding: 10px;
+  flex-direction: row;
+  position: relative;
+  max-width: 790px;
+  margin: 0 auto; 
+  padding: 20px;
   border-radius: 10px 10px 0px 0px;
   background-color: none;
   transition: 0.3s;
@@ -41,7 +38,7 @@
 }
 
 .completed-title {
-  flex: 1;
+  flex: 4;
   position: inherit;
   text-align: left;
   font-size: 18px;
@@ -49,7 +46,6 @@
 }
 
 .clear-all-button-container  {
-  display: flex;
   position: inherit;
   flex: 1;
   justify-content: right;
@@ -77,6 +73,7 @@
 }
 
 .completed-count {
+  flex: 0;
   padding-left: 20px;
   position: inherit;
   text-align: right;
@@ -91,8 +88,7 @@
     margin-top: 300px;
   }
 
-  .completed-container {
-    margin-top: 30px;
+  .completed-title {
+    flex: 3;
   }
-
 }
