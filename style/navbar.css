@@ -1,16 +1,13 @@
 
 .todo-navbar {
-  padding-top: 5px;
   position: fixed;
-  width: 100%;
-  background-color:rgb(252, 217, 104);
-  height: 130px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: rgb(252, 217, 104);
   border-bottom: 5px solid black;
   top: 0;
-  left: 0;
   z-index: 1;
-  
-  padding: 10px;
 }
 
 .navbar-container {
@@ -53,8 +50,9 @@
 
 .todo-input-field {
   display: flex;
-  width: 830px;
   gap: 10px;
+  width: 100%; /* instead of 830px */
+  flex-wrap: wrap; /* allows wrapping */
 }
 
 .description{
@@ -78,7 +76,16 @@
   border: none;
 }
 
+.description,
+.date,
 .todo-create-button {
+  min-width: 0; /* prevents overflow in flexbox */
+  width: 100%; /* mobile full width */
+  box-sizing: border-box;
+}
+
+.todo-create-button {
+  width: auto;
   border: 1px solid black;
   background-color: white;
   font-family: space mono;
@@ -95,24 +102,20 @@
   transition: 0.3s;
 }
 
-
+.todo-status-completed {
+    margin-top: 200px;
+}
 
 /* Apply styles for screens 600px wide or smaller */
 @media only screen and (max-width: 600px) {
   .todo-navbar {
-    padding: 10px;
+    padding: 20px;
     height: 235px;
-  }
-
-  .todo-header {
-    font-size: 25px;
-    padding: 10px;
   }
 
   .todo-input-field {
     display: flex;
     flex-direction: column;
-    width: 150px;
     gap: 10px;
   }
 
@@ -125,7 +128,18 @@
   }
 
   .todo-create-button {
-    height: 40px;
+    min-height: 40px;
+  }
+
+  .todo-input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%; /* override fixed 830px */
+  }
+
+  .description, .date, .todo-create-button {
+    flex: 1 1 100%;
   }
 
 }

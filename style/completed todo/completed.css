@@ -16,12 +16,13 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  margin: 190px auto 0;
+  margin: auto;
 }
 
 .completed-title-container {
   position: relative;
   display: flex;
+  margin-top: 30px;
   width: 800px;
   padding: 10px;
   border-radius: 10px 10px 0px 0px;
@@ -81,4 +82,17 @@
   text-align: right;
   font-size: 18px;
   font-weight: bold;
+}
+
+/* Apply styles for screens 600px wide or smaller */
+@media only screen and (max-width: 600px) {
+
+  .todo-status-completed {
+    margin-top: 300px;
+  }
+
+  .completed-title-container {
+    margin-top: 30px;
+  }
+
 }

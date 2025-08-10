@@ -34,7 +34,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 20px;
-  margin-top: 120px;
+  margin-top: 140px;
   width: 800px;
   justify-items: center;
   margin-left: auto;
@@ -64,8 +64,12 @@ body {
 /* Apply styles for screens 600px wide or smaller */
 @media only screen and (max-width: 600px) {
   body {
-    font-size: 10px;
+    font-size: 15px;
     padding: 10px;
   }
   
+  .pending-todo-title-container-active {
+    margin-top: 250px;
+  }
+
 }
