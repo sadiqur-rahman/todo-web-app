@@ -3,12 +3,6 @@ body {
   background-color: rgb(238, 238, 238);
 }
 
-.todo-status-div {
-  display: none; 
-  margin-top: 150px;
-  text-align: center;
-}
-
 .todo-status-completed {
   display: block;
 }

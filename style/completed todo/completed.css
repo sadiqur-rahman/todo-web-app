@@ -10,19 +10,19 @@
 }
 
 .completed-container {
+  position: relative;
   display: flex;
   width: 800px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  margin: auto;
+  margin: 30px auto;
 }
 
 .completed-title-container {
   position: relative;
   display: flex;
-  margin-top: 30px;
   width: 800px;
   padding: 10px;
   border-radius: 10px 10px 0px 0px;
@@ -91,7 +91,7 @@
     margin-top: 300px;
   }
 
-  .completed-title-container {
+  .completed-container {
     margin-top: 30px;
   }
 

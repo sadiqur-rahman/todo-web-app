@@ -110,7 +110,7 @@
 @media only screen and (max-width: 600px) {
   .todo-navbar {
     padding: 20px;
-    height: 235px;
+    height: 210px;
   }
 
   .todo-input-field {

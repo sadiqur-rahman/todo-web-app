@@ -1,6 +1,8 @@
 .todo-status-div {
   display: none; 
-  position: absolute;
+  margin-top: 200px;
+  text-align: center;
+  position: relative;
   top: 25px;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -69,3 +71,13 @@
   transition: 0.2s;
   font-weight: bold;
 }
+
+/* Apply styles for screens 600px wide or smaller */
+@media only screen and (max-width: 600px) {
+
+  .todo-status-div {
+    margin-top: 300px;
+  }
+
+}
+
