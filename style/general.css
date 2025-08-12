@@ -4,6 +4,20 @@ body {
   padding: 10px;
 }
 
+.todo-status-div-container {
+  position: relative;
+}
+
+.todo-status-div {
+  display: none; 
+  position: relative;
+  margin-top: 200px;
+  text-align: center;
+  top: 25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .todo-pending-bar{
   position: relative;
   width: 100%;
@@ -45,15 +59,11 @@ body {
   font-weight: bold;
 }
 
-.todo-status-completed {
-  display: block;
-}
-
 .todo-display-container {
   position: relative;
   width: 100%;
+  margin-bottom: 200px;
 }
-
 
 .disabled-button {
   pointer-events: none;
@@ -77,5 +87,9 @@ body {
 
   .todo-pending-bar{
     margin-top: 250px;
+  }
+
+  .todo-status-div {
+    margin-top: 300px;
   }
 }

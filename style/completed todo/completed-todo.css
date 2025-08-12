@@ -1,15 +1,4 @@
-.todo-status-div {
-  display: none; 
-  margin-top: 200px;
-  text-align: center;
-  position: relative;
-  top: 25px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.todo-status-completed {
-  display: block;
-}
+
 
 .completed-todo-container {
   position: relative;
@@ -75,8 +64,6 @@
 /* Apply styles for screens 600px wide or smaller */
 @media only screen and (max-width: 600px) {
 
-  .todo-status-div {
-    margin-top: 300px;
-  }
+  
 }
 
