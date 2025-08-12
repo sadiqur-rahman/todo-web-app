@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: center;
   background-color: rgb(219, 219, 219);
   padding: 10px 20px;
   width: 100%;
