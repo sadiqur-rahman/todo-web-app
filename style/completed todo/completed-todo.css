@@ -1,4 +1,7 @@
-
+.completed-todo-display {
+  width: 100%;
+  background-color: aqua;
+}
 
 .completed-todo-container {
   position: relative;
@@ -28,11 +31,13 @@
   height: auto;
   padding-right: 50px;
 }
+
 .complete-todo-date {
   flex: 1;
   text-decoration: line-through;
   color: rgb(100, 100, 100);
 }
+
 .complete-action-button {
   display: flex;
   flex-direction: row;
@@ -47,7 +52,8 @@
   border: none;
   border-radius: 5px;
   font-size: 15px;
-  position: absolute;
+  position: static;
+  margin-left: auto;
   right: 15px;
   height: 25px;
   font-family: space mono;
@@ -64,6 +70,18 @@
 /* Apply styles for screens 600px wide or smaller */
 @media only screen and (max-width: 600px) {
 
-  
+  .completed-todo-display {
+
+  }  
+
+  .completed-todo-container {
+    flex-direction: column;  /* Stack items vertically */
+    height: 100px;
+  }
+
+  .clear-todo-button {
+    margin-left: 0;
+    align-self: flex-end; /* keep it visible on the right */
+  }
 }
 
