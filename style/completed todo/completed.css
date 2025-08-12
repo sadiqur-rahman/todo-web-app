@@ -16,8 +16,9 @@
 }
 
 .completed-container {
-  position: relative;
+  position: absolute;
   width: 100%;
+  top: 300px;
 }
 
 .completed-title-container {
