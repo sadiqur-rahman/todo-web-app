@@ -1,4 +1,3 @@
-
 .todo-container {
   font-size: 15px;
   position: relative;
@@ -6,14 +5,18 @@
   flex-direction: row;
   background-color: white;
   padding: 10px;
-  width: 810px;
+  width: 100%;
+  max-width: 810px;
   border-radius: 10px;
+  flex-wrap: wrap; /* allows wrapping */
 }
 
 .todo-checkbox {
+  flex: 0 0 auto; /* don't stretch */
   margin-right: 20px;
   width: 20px;
 }
+
 .todo-description {
   flex: 2;
   white-space: normal;
@@ -21,43 +24,19 @@
   overflow-wrap: break-word;
   height: auto;
   padding-right: 50px;
-}
-
-.todo-description-completed {
-  text-decoration: line-through;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .todo-date {
   flex: 1;
 }
 
-.todo-date-completed {
-  text-decoration: line-through;
-}
-
 .action-button {
+  position: relative;
   display: flex;
   flex-direction: row;
   flex: 1;
-}
-
-.edit-saved-message {
-  position: absolute;
-  visibility: hidden;
-  right: 45px;
-  height: 25px;
-  font-family: space mono;
-  color: rgb(7, 133, 7);
-  font-size: 12px;
-}
-
-
-.todo-save-button, .edit-cancel-button, .todo-edit-button, .todo-delete-button {
-  border: 1px solid black;
-  border-radius: 5px;
-  font-size: 12px;
-  margin-top: -3px;
-  background-color: white;
 }
 
 .todo-edit-button {
@@ -95,6 +74,32 @@
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
+.todo-description-completed {
+  text-decoration: line-through;
+}
+
+.todo-date-completed {
+  text-decoration: line-through;
+}
+
+.edit-saved-message {
+  position: absolute;
+  visibility: hidden;
+  right: 45px;
+  height: 25px;
+  font-family: space mono;
+  color: rgb(7, 133, 7);
+  font-size: 12px;
+}
+
+.todo-save-button, .edit-cancel-button, .todo-edit-button, .todo-delete-button {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: -3px;
+  background-color: white;
+}
+
 .disabled-delete-button {
   pointer-events: none;
   opacity: 0.5;
@@ -120,4 +125,18 @@
 
 .disable-todo-description, .disable-todo-description {
   opacity: 0.5;
+}
+
+
+@media (max-width: 600px) {
+
+  .todo-container {
+    flex-direction: row;
+  }
+
+  .todo-description {
+    flex: unset;
+    width: 100%;
+    padding-bottom: 20px
+  }
 }

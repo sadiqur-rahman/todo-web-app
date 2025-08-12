@@ -30,7 +30,7 @@
 }
 
 .complete-action-button {
-  flex: 0 0 auto;
+  flex: 0 0 auto; /* don't stretch */
   z-index: 1;
 }
 

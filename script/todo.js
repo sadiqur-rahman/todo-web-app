@@ -94,6 +94,7 @@ export function renderTodo() {
         </div>
 
         <div class="todo-container">
+        
           <div class="todo-checkbox js-todo-checkbox">
             <input class="todo-checkbox-input js-todo-checkbox-input" data-index="${index}" type="checkbox">
           </div>
