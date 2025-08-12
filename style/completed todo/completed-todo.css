@@ -1,35 +1,27 @@
-.completed-todo-display {
-  width: 100%;
-  background-color: aqua;
-}
-
 .completed-todo-container {
   position: relative;
   display: flex;
   flex-direction: row;
-  background-color: rgb(219, 219, 219);;
-  padding: 10px 20px 10px 20px;
-  width: 780px;
+  align-items: center;
+  background-color: rgb(219, 219, 219);
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 830px;
+  box-sizing: border-box;
+  gap: 10px;
 }
 
 .complete-todo-checkbox {
-  margin-right: 10px;
-  width: 20px;
-  initial-value: checked;
-}
-
-.complete-todo-checkbox-input:hover {
-  cursor: pointer;
+  flex: 0 0 auto; /* don't stretch */
+  z-index: 1;
 }
 
 .complete-todo-description {
   flex: 2;
-  white-space: normal;
   color: rgb(100, 100, 100);
   word-break: break-word;
   overflow-wrap: break-word;
-  height: auto;
-  padding-right: 50px;
+  padding-right: 20px;
 }
 
 .complete-todo-date {
@@ -39,26 +31,37 @@
 }
 
 .complete-action-button {
+  flex: 0 0 auto;
+  z-index: 1;
+}
+
+.clear-todo-button {
+  position: absolute;
+  flex: 1;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 30px;
+  font-family: space mono;
+  background-color: transparent;
+  color: rgb(100, 100, 100);
+  align-items: right;
+  justify-content: flex-end; /* keep clear button right-aligned */
+}
+
+.complete-todo-checkbox-input:hover {
+  cursor: pointer;
+}
+
+.complete-action-button {
   display: flex;
   flex-direction: row;
   flex: 1;
+  justify-content: flex-end; /* keep clear button right-aligned */
 }
 
 .js-complete-todo-date-inactive {
   display: none;
-}
-
-.clear-todo-button {
-  border: none;
-  border-radius: 5px;
-  font-size: 15px;
-  position: static;
-  margin-left: auto;
-  right: 15px;
-  height: 25px;
-  font-family: space mono;
-  background-color: transparent;
-  color: rgb(100, 100, 100);
 }
 
 .clear-todo-button:hover {
@@ -67,21 +70,40 @@
   font-weight: bold;
 }
 
-/* Apply styles for screens 600px wide or smaller */
-@media only screen and (max-width: 600px) {
-
-  .completed-todo-display {
-
-  }  
-
+/* MOBILE */
+@media (max-width: 600px) {
   .completed-todo-container {
-    flex-direction: column;  /* Stack items vertically */
-    height: 100px;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    padding-top: 35px;
   }
 
-  .clear-todo-button {
-    margin-left: 0;
-    align-self: flex-end; /* keep it visible on the right */
+  /* Reset flex so each row takes full width */
+  .complete-todo-description,
+  .complete-todo-date,
+  .complete-action-button {
+    flex: unset;
+    width: 100%;
+  }
+
+  .complete-action-button {
+    display: flex;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    justify-content: flex-end; /* keep clear button right-aligned */
+    margin-top: 5px;
+  }
+
+  .complete-todo-checkbox {
+    flex-shrink: 0; /* prevent shrinking */
+    z-index: 1;
+  }
+
+  .complete-todo-checkbox-input {
+    z-index: 1;
   }
 }
 

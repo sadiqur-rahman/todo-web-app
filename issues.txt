@@ -49,3 +49,10 @@ algorithm for editing and saving a todo: [this will be written on todo.js button
 -------------------------------------------------------
 
 Bugs:
+1. height issue of completed todos on big screen
+  > .js-completed-todo-display-active {
+      max-height: 10000px;
+      background-color: none;
+      padding-bottom: 50px;
+    }
+2. alignment issue in completed todos on big screen

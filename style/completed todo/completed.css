@@ -1,12 +1,17 @@
 .completed-todo-display {
   max-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
   transition: max-height 0.2s ease;
 }
 
 .js-completed-todo-display-active {
-  max-height: 1000px;
+  max-height: 10000px;
   background-color: none;
+  padding-bottom: 50px;
 }
 
 .todo-status-completed {
@@ -16,9 +21,9 @@
 }
 
 .completed-container {
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 300px;
+  top: 100px;
 }
 
 .completed-title-container {
@@ -90,11 +95,16 @@
 /* Apply styles for screens 600px wide or smaller */
 @media only screen and (max-width: 600px) {
 
+  .js-completed-todo-display-active {
+    max-height: 1000px;
+    background-color: none;
+  }
+  
   .todo-status-completed {
     margin-top: 300px;
   }
 
   .completed-title {
-    flex: 3;
+    flex: 2;
   }
 }
