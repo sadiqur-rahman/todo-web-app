@@ -3,7 +3,6 @@
   width: 100%;
   max-width: 830px; /* match todo-container max-width */
   box-sizing: border-box;
-  /* optionally flex display if needed */
   display: flex; 
   flex-direction: column;
   margin: auto;
@@ -87,7 +86,6 @@
 
   .todo-container {
     flex-direction: column;
-    padding: 20px;
   }
 
   .todo-checkbox {
@@ -106,6 +104,14 @@
   .todo-date {
     flex: 1;
     padding-left: 0px;
+  }
+
+  .action-button {
+    justify-content: flex-end;;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 10px
   }
 
 }

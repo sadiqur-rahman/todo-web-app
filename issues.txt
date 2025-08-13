@@ -10,3 +10,6 @@
 --------------------------------------------------------------
 
 Bugs:
+1. pending todo description in editing needs to be resized small in mobile view
+2.  height of input in editing todo and date needs to be increased.
+3. save, edit button needs to be beside the delete button on mobile view

@@ -72,7 +72,6 @@ body {
 
 .todo-display {
   display: grid;
-  gap: 10px;
   grid-template-columns: auto;
   justify-items: center; 
 }

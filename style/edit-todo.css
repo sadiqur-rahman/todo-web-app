@@ -2,16 +2,13 @@
   visibility: hidden;
   position: relative;
   width: 100%;
+  max-width: 770px;
+  box-sizing: border-box;
   height: 100%;
   z-index: 1;
-  top: 32px;
-  left: 30px;
+  top: 42px;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  align-content: center;
-  align-items: flex-start;
-  background-color: aqua;
 }
 
 .edit-todo-input {
@@ -20,14 +17,12 @@
 
 .edit-date-input{
   flex: 1;
-  left: 410px;
+  position: relative;
   color: rgb(139, 139, 139);
-  appearance: none;
-  padding-bottom: 2px;
+  margin-left: 20px;
 }
 
 .edit-todo-input, .edit-date-input {
-  position: absolute;
   font-size: 15px;
   font-family: space mono;
   padding-left: 10px;
@@ -46,6 +41,9 @@
   flex: 1;
   justify-content: flex-end;
   gap: 10px;
+  position: relative;
+  top: 12px;
+  right: 11px;
 }
 
 .todo-edit-button {
@@ -86,7 +84,7 @@
   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
-  margin-top: -3px;
+  margin-top: -2px;
   background-color: white;
   color: black;
 }
@@ -113,11 +111,39 @@
 }
 
 @media (max-width: 600px) {
-
-  .action-button {
-    justify-content: flex-end;;
+  .edit-todo-container {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 103px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .edit-todo-input {
+    flex:1;
+  }
+
+  .edit-date-input{
+    flex: 1;
+    position: relative;
+    left: 0px;
+    color: rgb(139, 139, 139);
+    appearance: none;
+    padding-bottom: 2px;
+    height: 40px;
+    margin-left: 0px;
+  }
+
+  .edit-action-button {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
     flex-direction: row;
     flex: 1;
+    gap: 10px;
+    right: 32px;
+    top: 4px;
   }
 }
