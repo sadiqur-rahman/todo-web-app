@@ -1,3 +1,16 @@
+.todo-display {
+  position: relative;
+  width: 100%;
+  max-width: 810px; /* match todo-container max-width */
+  box-sizing: border-box;
+  /* optionally flex display if needed */
+  display: flex; 
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
 .todo-container {
   font-size: 15px;
   position: relative;
@@ -6,14 +19,15 @@
   background-color: white;
   padding: 10px;
   width: 100%;
-  max-width: 810px;
+  min-width: 0; /* crucial to allow shrinking inside flex container */
   border-radius: 10px;
+  box-sizing: border-box;
   flex-wrap: wrap; /* allows wrapping */
 }
 
 .todo-checkbox {
   flex: 0 0 auto; /* don't stretch */
-  margin-right: 20px;
+  margin-right: 10px;
   width: 20px;
 }
 
@@ -23,52 +37,49 @@
   word-break: break-word;
   overflow-wrap: break-word;
   height: auto;
-  padding-right: 50px;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
 .todo-date {
   flex: 1;
+  padding-left: 10px;
 }
 
 .action-button {
-  position: relative;
   display: flex;
   flex-direction: row;
   flex: 1;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
 .todo-edit-button {
-  position: absolute;
+  position: relative;
   visibility: visible;
-  right: 45px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px 
 }
 
 .todo-save-button{
-  position: absolute;
+  position: relative;
   visibility: hidden;
-  right: 115px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);
 }
 
 .edit-cancel-button {
-  position: absolute;
+  position: relative;
   visibility: hidden;
-  right: 45px;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px 
 }
 
 .todo-delete-button {
-  position: absolute;
-  right: 10px;
+  position: relative;
   height: 25px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
@@ -131,12 +142,31 @@
 @media (max-width: 600px) {
 
   .todo-container {
-    flex-direction: row;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .todo-checkbox {
+    flex: 0 0 auto; /* don't stretch */
+    margin-left: -5px;
+    width: 20px;
   }
 
   .todo-description {
     flex: unset;
     width: 100%;
     padding-bottom: 20px
+  }
+
+  .todo-date {
+    flex: 1;
+    padding-left: 0px;
+  }
+
+  .action-button {
+    justify-content: flex-end;;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
   }
 }
