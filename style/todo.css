@@ -1,7 +1,7 @@
 .todo-display {
   position: relative;
   width: 100%;
-  max-width: 810px; /* match todo-container max-width */
+  max-width: 830px; /* match todo-container max-width */
   box-sizing: border-box;
   /* optionally flex display if needed */
   display: flex; 
