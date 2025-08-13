@@ -401,7 +401,7 @@ createButtonElement.addEventListener('click', () => {
 });
 
 // Check if the input/pasted date while creating is valid or not function
-function checkDateTodayOrLater(dateInput) {
+export function checkDateTodayOrLater(dateInput) {
   const today = new Date().toISOString().split('T')[0];
   return dateInput === '' || dateInput >= today; // allow empty date
 }

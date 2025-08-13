@@ -83,6 +83,7 @@
   min-width: 0; /* prevents overflow in flexbox */
   width: 100%; /* mobile full width */
   box-sizing: border-box;
+  color: black;
 }
 
 .todo-create-button {

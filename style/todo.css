@@ -109,6 +109,7 @@
   font-size: 12px;
   margin-top: -3px;
   background-color: white;
+  color: black;
 }
 
 .disabled-delete-button {
@@ -150,6 +151,7 @@
     flex: 0 0 auto; /* don't stretch */
     margin-left: -5px;
     width: 20px;
+    margin-bottom: 10px;
   }
 
   .todo-description {

@@ -1,4 +1,4 @@
-import { todoList, deleteTodo, updatePendingCount, saveToLocal, checkTodoStatus } from './todo.js';
+import { todoList, deleteTodo, updatePendingCount, saveToLocal, checkTodoStatus, checkDateTodayOrLater } from './todo.js';
 
 const completedTodoList = JSON.parse(localStorage.getItem('completedTodoList')) || [];
 
@@ -47,8 +47,22 @@ function clearAllCompletedTodo() {
 // rendering completed todo function
 export function renderCompleted() {
   let renderCompletedHTML = '';
+  
+  
   completedTodoList.forEach((todoItem, index) => {
     if (!todoItem || typeof todoItem.todo !== 'string') return; // skip bad
+    // checking each date and make it red if it is past on reload
+    let dateHTML = '';
+    if (todoItem.date) {
+      if (checkDateTodayOrLater(todoItem.date)) {
+        dateHTML = '<b>Date: </b>' + todoItem.date;
+      } else {
+        dateHTML = '<b>Date: </b><span style="color:red;">' + todoItem.date + '</span>';
+      }
+    } else {
+      dateHTML = '';
+    }
+    
     renderCompletedHTML += `
         <div class="completed-todo-container">
           <div class="complete-todo-checkbox">
@@ -58,7 +72,7 @@ export function renderCompleted() {
           <div class="complete-todo-description todo-description-completed" data-index="${index}">${todoItem.todo}</div>
 
           <div class="complete-todo-date todo-date-completed">
-            <div class="todo-due-date" data-index="${index}">${todoItem.date}</div>
+            <div class="todo-due-date" data-index="${index}">${dateHTML}</div>
           </div>
           
           <div class="complete-action-button">
