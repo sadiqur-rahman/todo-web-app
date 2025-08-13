@@ -1,19 +1,25 @@
 .edit-todo-container {
   visibility: hidden;
   position: relative;
-  width: 830px;
+  width: 100%;
+  height: 100%;
   z-index: 1;
-  top: 10px;
-  left: 40px;
+  top: 32px;
+  left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: flex-start;
+  background-color: aqua;
 }
 
 .edit-todo-input {
-  width: 360px;
-  height: auto;
+  flex:2;
 }
 
 .edit-date-input{
-  width: 150px;
+  flex: 1;
   left: 410px;
   color: rgb(139, 139, 139);
   appearance: none;
@@ -31,4 +37,87 @@
   background-color: white;
   border: none;
   color: black;
+}
+
+.edit-action-button {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.todo-edit-button {
+  position: relative;
+  visibility: visible;
+  height: 25px;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px 
+}
+
+.todo-save-button{
+  position: relative;
+  visibility: hidden;
+  height: 25px;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px rgb(7, 133, 7);
+}
+
+.edit-cancel-button {
+  position: relative;
+  visibility: hidden;
+  height: 25px;
+  font-family: space mono;
+  box-shadow: 3px 3px 1px 
+}
+
+.edit-saved-message {
+  position: absolute;
+  visibility: hidden;
+  right: 45px;
+  height: 25px;
+  font-family: space mono;
+  color: rgb(7, 133, 7);
+  font-size: 12px;
+}
+
+.todo-save-button, .edit-cancel-button, .todo-edit-button {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: -3px;
+  background-color: white;
+  color: black;
+}
+
+.todo-save-button:hover, .edit-cancel-button:hover, .todo-edit-button:hover {
+  box-shadow: 4px 4px 1px black;
+  cursor: pointer;
+  background-color: rgb(230, 230, 230);
+  transition: 0.3s;
+}
+
+.todo-checkbox-input:hover {
+  cursor: pointer;
+}
+
+.disabled-button {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.disable-todo-description, .disable-todo-description {
+  opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+
+  .action-button {
+    justify-content: flex-end;;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+  }
 }

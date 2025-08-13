@@ -90,11 +90,17 @@ export function renderTodo() {
     renderHTML += `
         <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
           <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="">
+
           <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="" min="">
+
+          <div class="edit-action-button">
+            <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
+            <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
+            <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
+          </div>
         </div>
 
         <div class="todo-container">
-        
           <div class="todo-checkbox js-todo-checkbox">
             <input class="todo-checkbox-input js-todo-checkbox-input" data-index="${index}" type="checkbox">
           </div>
@@ -106,17 +112,8 @@ export function renderTodo() {
           </div>
           
           <div class="action-button">
-
-            <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
-
-            <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
-
-            <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
-
             <button class="todo-edit-button js-todo-edit-button" data-index="${index}">Edit</button>
-            
             <button class="todo-delete-button js-todo-delete-button" data-index="${index}">X</button>
-
           </div>
         </div>
       `;

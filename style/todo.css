@@ -46,38 +46,6 @@
   padding-left: 10px;
 }
 
-.action-button {
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.todo-edit-button {
-  position: relative;
-  visibility: visible;
-  height: 25px;
-  font-family: space mono;
-  box-shadow: 3px 3px 1px 
-}
-
-.todo-save-button{
-  position: relative;
-  visibility: hidden;
-  height: 25px;
-  font-family: space mono;
-  box-shadow: 3px 3px 1px rgb(7, 133, 7);
-}
-
-.edit-cancel-button {
-  position: relative;
-  visibility: hidden;
-  height: 25px;
-  font-family: space mono;
-  box-shadow: 3px 3px 1px 
-}
-
 .todo-delete-button {
   position: relative;
   height: 25px;
@@ -85,25 +53,7 @@
   box-shadow: 3px 3px 1px rgb(216, 11, 11);
 }
 
-.todo-description-completed {
-  text-decoration: line-through;
-}
-
-.todo-date-completed {
-  text-decoration: line-through;
-}
-
-.edit-saved-message {
-  position: absolute;
-  visibility: hidden;
-  right: 45px;
-  height: 25px;
-  font-family: space mono;
-  color: rgb(7, 133, 7);
-  font-size: 12px;
-}
-
-.todo-save-button, .edit-cancel-button, .todo-edit-button, .todo-delete-button {
+.todo-delete-button {
   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
@@ -118,27 +68,20 @@
   cursor: default;
 }
 
-.todo-save-button:hover, .edit-cancel-button:hover, .todo-edit-button:hover, .todo-delete-button:hover {
+.todo-delete-button:hover {
   box-shadow: 4px 4px 1px black;
   cursor: pointer;
   background-color: rgb(230, 230, 230);
   transition: 0.3s;
 }
 
-.todo-checkbox-input:hover {
-  cursor: pointer;
+.todo-description-completed {
+  text-decoration: line-through;
 }
 
-.disabled-button {
-  pointer-events: none;
-  opacity: 0.5;
-  cursor: default;
+.todo-date-completed {
+  text-decoration: line-through;
 }
-
-.disable-todo-description, .disable-todo-description {
-  opacity: 0.5;
-}
-
 
 @media (max-width: 600px) {
 
@@ -165,10 +108,4 @@
     padding-left: 0px;
   }
 
-  .action-button {
-    justify-content: flex-end;;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-  }
 }
