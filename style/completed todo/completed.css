@@ -95,7 +95,7 @@
 @media only screen and (max-width: 600px) {
 
   .js-completed-todo-display-active {
-    max-height: 1000px;
+    max-height: 50000px;
     background-color: none;
   }
   
