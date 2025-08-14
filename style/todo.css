@@ -8,6 +8,7 @@
   margin: auto;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
 .todo-container {
@@ -16,7 +17,7 @@
   display: flex;
   flex-direction: row;
   background-color: white;
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   min-width: 0; /* crucial to allow shrinking inside flex container */
   border-radius: 10px;
@@ -86,6 +87,7 @@
 
   .todo-container {
     flex-direction: column;
+    padding: 20px;
   }
 
   .todo-checkbox {
