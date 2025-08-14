@@ -1,10 +1,10 @@
 .edit-todo-container {
   visibility: hidden;
-  position: absolute;
-  top: 11px;
+  position: relative;
+  top: 71px;
   left: 40px;
   width: 100%;
-  max-width: 770px;
+  max-width: 500px;
   box-sizing: border-box;
   z-index: 1;
   display: flex;
@@ -12,18 +12,26 @@
 }
 
 .edit-todo-input {
-  flex:2;
+  flex:1;
+  min-width: 0;
   height: 40px;
   box-sizing: border-box;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .edit-date-input{
   flex: 1;
+  min-width: 0;
   height: 40px;
   box-sizing: border-box;
   position: relative;
   color: rgb(139, 139, 139);
   margin-left: 20px;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .edit-todo-input, .edit-date-input {
@@ -39,15 +47,12 @@
 }
 
 .edit-action-button {
-  display: flex;
   position: relative;
   flex: 1;
-  flex-direction: row;
-  flex: 1;
-  justify-content: flex-start;
   gap: 10px;
-  top: 11px;
-  left: 35px;
+  display: flex;
+  justify-content: flex-end;
+  
 }
 
 .todo-edit-button {
@@ -116,8 +121,8 @@
 
 @media (max-width: 600px) {
   .edit-todo-container {
-    position: absolute;
-    top: 32px;
+    position: relative;
+    top: 161px;
     left: 0;
     display: flex;
     flex-direction: column;
@@ -153,7 +158,7 @@
     flex-direction: row;
     flex: 1;
     gap: 10px;
-    left: -40px;
     top: 4px;
+    left: -50px;
   }
 }

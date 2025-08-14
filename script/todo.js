@@ -93,11 +93,6 @@ export function renderTodo() {
 
           <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="" min="">
 
-          <div class="edit-action-button">
-            <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
-            <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
-            <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
-          </div>
         </div>
 
         <div class="todo-container">
@@ -109,6 +104,12 @@ export function renderTodo() {
 
           <div class="todo-date">
             <div class="todo-due-date js-todo-due-date" data-index="${index}">${dateHTML}</div>
+          </div>
+
+          <div class="edit-action-button">
+            <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
+            <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
+            <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
           </div>
           
           <div class="action-button">
