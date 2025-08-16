@@ -88,14 +88,29 @@ export function renderTodo() {
     if (!todoItem || typeof todoItem.todo !== 'string') return;
 
     renderHTML += `
-        <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
-          <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="">
-
-          <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="" min="">
-
-        </div>
+        
 
         <div class="todo-container">
+
+
+          <!-- Editing todos -->
+
+          <div class="edit-todo-container js-edit-todo-container" data-index="${index}">
+            <input class="edit-todo-input js-edit-todo-input" data-index="${index}" type="text" value="">
+
+            <div class="edit-date-save-button-group">
+              <input class="edit-date-input js-edit-date-input" data-index="${index}" type="date" value="" min="">
+
+              <div class="edit-action-button">
+                <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
+                <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
+                <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending todos -->
+        
           <div class="todo-checkbox js-todo-checkbox">
             <input class="todo-checkbox-input js-todo-checkbox-input" data-index="${index}" type="checkbox">
           </div>
@@ -106,11 +121,7 @@ export function renderTodo() {
             <div class="todo-due-date js-todo-due-date" data-index="${index}">${dateHTML}</div>
           </div>
 
-          <div class="edit-action-button">
-            <div class="edit-saved-message js-edit-saved-message" data-index="${index}">Saved</div>
-            <button class="todo-save-button js-todo-save-button" data-index="${index}">Save</button>
-            <button class="edit-cancel-button js-edit-cancel-button" data-index="${index}">Cancel</button>
-          </div>
+          
           
           <div class="action-button">
             <button class="todo-edit-button js-todo-edit-button" data-index="${index}">Edit</button>

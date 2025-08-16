@@ -1,10 +1,13 @@
+.js-todo-display{
+  position: relative;
+}
+
 .edit-todo-container {
   visibility: hidden;
-  position: relative;
-  top: 72px;
+  position: absolute;
+  top: 12px;
   left: 40px;
-  width: 100%;
-  max-width: 500px;
+  width: 80%;
   box-sizing: border-box;
   z-index: 1;
   display: flex;
@@ -46,10 +49,17 @@
   color: black;
 }
 
+.edit-date-save-button-group{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
 .edit-action-button {
   position: relative;
   flex: 1;
   gap: 10px;
+  right: 1px;
   display: flex;
   justify-content: flex-end;
   
@@ -59,6 +69,7 @@
   position: relative;
   visibility: visible;
   height: 25px;
+  margin-top: -2px;
   font-family: space mono;
   box-shadow: 3px 3px 1px 
 }
@@ -67,6 +78,7 @@
   position: relative;
   visibility: hidden;
   height: 25px;
+  margin-top: 6px;
   font-family: space mono;
   box-shadow: 3px 3px 1px rgb(7, 133, 7);
 }
@@ -75,6 +87,7 @@
   position: relative;
   visibility: hidden;
   height: 25px;
+  margin-top: 6px;
   font-family: space mono;
   box-shadow: 3px 3px 1px 
 }
@@ -93,7 +106,6 @@
   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
-  margin-top: -2px;
   background-color: white;
   color: black;
 }
@@ -120,9 +132,12 @@
 }
 
 @media (max-width: 600px) {
-  .edit-todo-container {
+  .js-todo-display{
     position: relative;
-    top: 140px;
+  }
+  
+  .edit-todo-container {
+    position: absolute;
     left: 0;
     display: flex;
     flex-direction: column;
@@ -148,6 +163,12 @@
     height: 40px;
     box-sizing: border-box;
     line-height: 40px; /* makes text vertically centered */
+    justify-content: left;
+  }
+
+  .edit-date-save-button-group{
+    display: flex;
+    flex-direction: row;
   }
 
   .edit-action-button {
@@ -157,7 +178,5 @@
     flex-direction: row;
     flex: 1;
     gap: 10px;
-    top: 23px;
-    left: -31px;
   }
 }

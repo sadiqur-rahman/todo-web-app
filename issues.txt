@@ -1,15 +1,14 @@
-1. turn off hover when no completed todo left
+Feature:
+1. made a sorting button.
 
-4. responsive design for mobile 
-  4.1: keep the due date below the todo description
-
-5. solving checkbox changed state  
-> mark checked on complete todo listener
-  > set the flag
 
 --------------------------------------------------------------
 
 Bugs:
-1. pending todo description in editing needs to be resized small in mobile view
-2.  height of input in editing todo and date needs to be increased.
-3. save, edit button needs to be beside the delete button on mobile view
+1. the editing div needs to be absolute, so no space is wasted.
+2. in mobile view, hide the navbar, show create todo button which will    show the navbar.
+
+3. solving checkbox changed state  
+> mark checked on complete todo listener
+  > set the flag
+
